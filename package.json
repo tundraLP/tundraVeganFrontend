@@ -1,0 +1,25 @@
+{
+  "name": "tundrafood",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
+    "@vitejs/plugin-react": "4.2.1",
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.0",
+    "redux": "^5.0.0",
+    "redux-thunk": "^3.1.0"
+  }
+}
