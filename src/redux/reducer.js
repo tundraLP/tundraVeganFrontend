@@ -1,31 +1,28 @@
-
+import { actions } from "./actions";
 
 const initialState = {
     user: {},
-    cart: {}
+    cart: [],
+    order: [],
+    favorite: []
 };
 
+export const rootReducer = (state = initialState, action) => {
+    switch (action.type) {
 
-const rootReducer = (state = initialState, action)=>{
-    switch (action.type){
-
-
-        case SING_IN:
-            return{
+        case actions.SIGN_IN:
+            return {
                 ...state,
                 user: action.payload
             };
-            
-        case SING_OUT:
-            return{
+
+        case actions.SIGN_OUT:
+            return {
                 ...state,
-                user: {}
+                user: action.payload
             };
 
-        default:    return state;
-
-    }
-}
-
-
-module.exports = rootReducer;
+        default:
+            return state;
+    };
+};
