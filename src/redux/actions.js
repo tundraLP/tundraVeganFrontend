@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const actions = {
     SIGN_IN: 'SIGN_IN',
     SIGN_OUT: 'SIGN_OUT',
@@ -11,9 +9,12 @@ export const actions = {
     CLEAN_ORDERS: 'CLEAN_ORDERS',
     ADD_TO_CART: 'ADD_TO_CART',
     CLEAN_CART: 'CLEAN_CART',
-
+    GET_PRODUCTS: 'GET_PRODUCTS',
+    CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
+    DELETE_FROM_CART: 'DELETE_FROM_CART'
 };
 
+// actions para los user
 
 export const sign_in = (user) => {
     return (dispatch) => {
@@ -33,72 +34,111 @@ export const sign_out = () => {
     };
 };
 
-export const clean_detail = ()=>{
-    return (dispatch) =>{
+// actions para los detail
+
+export const clean_detail = () => {
+    return (dispatch) => {
         return dispatch({
             type: actions.CLEAN_DETAIL,
             payload: null
         });
-    }
-}
+    };
+};
 
-export const get_detail = (detail)=>{
-    return (dispatch) =>{
+export const get_detail = (detail) => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_DETAIL,
             payload: detail
         });
-    }
-}
+    };
+};
 
-export const get_orders = (orders)=>{
-    return (dispatch) =>{
+// actions para las ordenes
+
+export const get_orders = (orders) => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_ORDERS,
             payload: orders
         });
-    }
-}
-export const clean_orders = ()=>{
-    return (dispatch) =>{
+    };
+};
+
+export const clean_orders = () => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_ORDERS,
             payload: []
         });
-    }
-}
+    };
+};
 
-export const get_favorites = (favorites)=>{
-    return (dispatch)=>{
+// actions para los favoritos
+
+export const get_favorites = (favorites) => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_FAVORITES,
             payload: favorites
         });
-    }
-}
-export const clean_favorites = ()=>{
-    return (dispatch)=>{
+    };
+};
+
+export const clean_favorites = () => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_FAVORITES,
             payload: []
         });
-    }
-}
+    };
+};
 
-export const add_to_cart = (cart)=>{
-    return (dispatch)=>{
+// actions para el carrito
+
+export const add_to_cart = (item) => {
+    return (dispatch) => {
         return dispatch({
             type: actions.ADD_TO_CART,
-            payload: cart
+            payload: item
         });
-    }
-}
+    };
+};
 
-export const clean_cart = ()=>{
-    return (dispatch) =>{
+export const delete_from_cart = (itemId) => {
+    return (dispatch) => {
+        return dispatch({
+            type: 'DELETE_FROM_CART',
+            payload: itemId
+        });
+    };
+};
+
+export const clean_cart = () => {
+    return (dispatch) => {
         return dispatch({
             type: actions.CLEAN_CART,
             payload: []
         });
-    }
-}
+    };
+};
+
+// actions para los productos
+
+export const get_products = (products) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.GET_PRODUCTS,
+            payload: products
+        });
+    };
+};
+
+export const clean_products = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CLEAN_PRODUCTS,
+            payload: []
+        });
+    };
+};
