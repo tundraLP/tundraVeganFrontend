@@ -1,0 +1,1 @@
+export const uriBack = 'http://localhost:8001';

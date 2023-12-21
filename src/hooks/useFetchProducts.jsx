@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { uriBack } from "../utils/const";
 import axios from "axios";
 
-export const useFetchOrder = (UserId) => {
+export const useFetchProducts = () => {
     const dispatch = useDispatch();
 
     useEffect(async () => {
-        const response = await axios.get(`${uriBack}/order/getOrdersById?UserId=${UserId}`).then((res) => res.data);
-        
+        const response = await axios.get(`${uriBack}/product/getProducts`);
+
     }, []);
 };
