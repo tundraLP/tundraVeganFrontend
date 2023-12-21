@@ -1,10 +1,11 @@
 import { actions } from "./actions";
 
 const initialState = {
-    user: {},
+    user: null,
     cart: [],
     order: [],
-    favorite: []
+    favorite: [],
+    detail: null
 };
 
 export const rootReducer = (state = initialState, action) => {
