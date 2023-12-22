@@ -1,15 +1,22 @@
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { uriBack } from "../utils/const";
-import { get_favorite } from '../redux/actions';
+import { get_favorites, put_error } from '../redux/actions';
 import axios from "axios";
 
 export const useFetchFavorite = (UserId) => {
     const dispatch = useDispatch();
 
-    useEffect(async () => {
-        const response = await axios.get(`${uriBack}/favorite/getFavoritesById?UserId=${UserId}`);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${uriBack}/favorite/getFavoritesById?UserId=${UserId}`).then((res) => res.data);
+                dispatch(get_favorites(response));
+            } catch (error) {
+                dispatch(put_error(error));
+            };
+        };
 
-        dispatch(get_favorite(response));
+        fetchData();
     }, []);
 };

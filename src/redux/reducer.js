@@ -1,12 +1,21 @@
 import { actions } from "./actions";
 
 const initialState = {
-    user: null,
+    user: {
+        id: "6e059561-c0dc-4e9b-99f0-af4ce8cd0966",
+        name: "blas",
+        lastName: "casale",
+        adress: "Avenida 15 n°4193",
+        mail: "truchomail@gmail.com",
+        image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
+        password: "Contrafalse123."
+    },
     cart: [],
     orders: [],
     favorites: [],
     detail: null,
-    products: []
+    products: [],
+    error: null
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -86,10 +95,10 @@ export const rootReducer = (state = initialState, action) => {
         case actions.ADD_TO_CART:
             const newProduct = action.payload;
 
-            const findProduct = cart.find((prod) => prod.prod.id === newProduct.prod.id);
+            const findProduct = state.cart.find((prod) => prod.id === newProduct.id);
 
             // aca falta agregar una notificacion para que el usuario sepa que el producto ya fue pusheado al carrito antes
-            if (findProduct == undefined) return state
+            if (findProduct != undefined) return state
             else {
                 return {
                     ...state,
@@ -99,7 +108,7 @@ export const rootReducer = (state = initialState, action) => {
 
         case actions.DELETE_FROM_CART:
             const itemToDelete = action.payload;
-            const filteredCart = cart.filter((prod) => prod.prod.id != itemToDelete.prod.id);
+            const filteredCart = cart.filter((prod) => prod.id != itemToDelete.id);
 
             return {
                 ...state,
@@ -124,6 +133,14 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload
+            };
+
+        // action para el error
+
+        case actions.ERROR:
+            return {
+                ...state,
+                error: action.payload
             };
 
         default:

@@ -15,12 +15,12 @@ export const useLocalStorage = () => {
     useEffect(() => {
         if (user) {
             const cartLS = localStorage.getItem('cart');
-            
+
             if (cartLS) {
                 const parsed = JSON.parse(cartLS);
-                if (parsed.day == day) dispatch(add_to_cart(parsed.cart));
+                if (parsed.day == day && user.id == parsed.id) dispatch(add_to_cart(parsed.cart));
                 else dispatch(clean_cart());
-            }
-        }
-    }, [user])
+            };
+        };
+    }, [user]);
 };

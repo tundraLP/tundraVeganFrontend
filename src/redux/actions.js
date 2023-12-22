@@ -11,7 +11,8 @@ export const actions = {
     CLEAN_CART: 'CLEAN_CART',
     GET_PRODUCTS: 'GET_PRODUCTS',
     CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
-    DELETE_FROM_CART: 'DELETE_FROM_CART'
+    DELETE_FROM_CART: 'DELETE_FROM_CART',
+    ERROR: 'ERROR'
 };
 
 // actions para los user
@@ -139,6 +140,17 @@ export const clean_products = () => {
         return dispatch({
             type: actions.CLEAN_PRODUCTS,
             payload: []
+        });
+    };
+};
+
+// action para el error
+
+export const put_error = (error) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.ERROR,
+            payload: error
         });
     };
 };
