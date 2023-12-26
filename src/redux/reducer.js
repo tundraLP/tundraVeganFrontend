@@ -1,20 +1,23 @@
 import { actions } from "./actions";
 
+const user = {
+    id: "6e059561-c0dc-4e9b-99f0-af4ce8cd0966",
+    name: "blas",
+    lastName: "casale",
+    adress: "Avenida 15 n°4193",
+    mail: "truchomail@gmail.com",
+    image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
+    password: "Contrafalse123."
+};
+
 const initialState = {
-    user: {
-        id: "6e059561-c0dc-4e9b-99f0-af4ce8cd0966",
-        name: "blas",
-        lastName: "casale",
-        adress: "Avenida 15 n°4193",
-        mail: "truchomail@gmail.com",
-        image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
-        password: "Contrafalse123."
-    },
+    user: null,
     cart: [],
     orders: [],
     favorites: [],
-    detail: null,
     products: [],
+    clients: [],
+    detail: null,
     error: null
 };
 
@@ -32,6 +35,20 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.payload
+            };
+
+        // actions para los clients 
+
+        case actions.GET_CLIENTS:
+            return {
+                ...state,
+                clients: action.payload
+            };
+
+        case actions.CLEAN_CLIENTS:
+            return {
+                ...state,
+                clients: action.payload
             };
 
         // actions para los detail
@@ -138,6 +155,12 @@ export const rootReducer = (state = initialState, action) => {
         // action para el error
 
         case actions.ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
+
+        case actions.CLEAN_ERROR:
             return {
                 ...state,
                 error: action.payload

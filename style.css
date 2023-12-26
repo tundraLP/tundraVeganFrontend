@@ -1,0 +1,36 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-size: 3.3rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2.7rem;
+    text-align: center;
+}

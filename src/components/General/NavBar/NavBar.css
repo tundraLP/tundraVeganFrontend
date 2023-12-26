@@ -1,0 +1,31 @@
+@media screen and (min-width: 300px) {
+    .nav {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .nav {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+.nav {
+    display: flex;
+    background-color: #EFD780;
+    align-items: center;
+    padding: 10px;
+    gap: 25px;
+}
+
+.link {
+    text-decoration: none;
+    color: #14110F;
+    transition: 1s;
+}
+
+.link:hover {
+    scale: 1.05;
+}

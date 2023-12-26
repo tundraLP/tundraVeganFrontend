@@ -1,40 +1,54 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useRedirectHome } from '../../../hooks/useRedirectHome';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { clean_cart } from '../../../redux/actions';
 import NavBarUser from '../../User/NavBarUser/NavBarUser';
 import NavBarAdmin from '../../Admin/NavBarAdmin/NavBarAdmin';
+import LinkNavBar from '../LinkNavBar/LinkNavBar';
+import './NavBar.css';
 
 const NavBar = () => {
     const user = useSelector((state) => state.user);
 
     const cart = useSelector((state) => state.cart);
 
-    const dispatch = useDispatch();
+    useEffect(() => {
+        if (user) {
+            const date = new Date();
 
-    console.table(cart)
+            const day = date.getDate();
+
+            const putInLS = {
+                day: day,
+                cart: cart,
+                id: user && user.id
+            };
+
+            const stringify = JSON.stringify(putInLS);
+
+            localStorage.setItem('cart', stringify);
+        };
+    }, [cart]);
+
     useRedirectHome();
 
     return (
-        <nav>
-            {user && user.type == 'User' && <NavBarUser />}
+        <nav className='nav'>
 
-            {user && user.type == 'Admin' && <NavBarAdmin />}
+            <NavLink to={user ? '/Inicio' : '/'} className='link'>
+                <h1> Tundra comida vegana</h1>
+            </NavLink >
 
-            <p>longitud del carrito {cart.length}</p>
+            <ul className='box-link'>
+                {user && user.type == 'User' && <NavBarUser />}
 
-            <button onClick={() => dispatch(clean_cart())}>Borrar carrito</button>
+                {user && user.type == 'Admin' && <NavBarAdmin />}
 
-            {user && <></>
-                // <div>
-                //     <div>
-                //         <img src={user.image} alt="Imagen de perfil" />
-                //         <p>{`${user.name} ${user.lastName}`}</p>
-                //     </div>
-                // </div>
-            }
-        </nav>
+                {!user && <LinkNavBar />}
+            </ul>
+
+        </nav >
     )
 }
 

@@ -1,0 +1,18 @@
+.box-link {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.linkNav {
+    color: #14110F;
+    transition: 0.7s;
+    font-size: 1.6rem;
+}
+
+.linkNav:hover {
+    text-decoration: underline;
+}
