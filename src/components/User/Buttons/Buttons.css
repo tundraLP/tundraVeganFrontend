@@ -1,0 +1,14 @@
+.box-buttons-cart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7px 10px;
+    gap: 10px;
+}
+
+.box-buttons-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

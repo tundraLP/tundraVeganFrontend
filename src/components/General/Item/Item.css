@@ -1,0 +1,27 @@
+.img {
+    width: 60px;
+    height: 60px;
+}
+
+.p {
+    font-size: 1.6rem;
+}
+
+.price {
+    color: green;
+}
+
+.category {
+    color: grey;
+}
+
+.card {
+    width: 270px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 10px;
+    border: solid black 2px;
+}

@@ -1,0 +1,23 @@
+@media screen and (min-width: 300px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.layout {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
