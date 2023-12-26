@@ -16,11 +16,11 @@ export const useRedirectHome = () => {
     }, [user])
 
     useEffect(() => {
+        !user && navigate('/');
         dispatch(clean_cart());
         dispatch(clean_detail());
         dispatch(clean_favorites());
         dispatch(clean_orders());
         dispatch(clean_products());
-        !user && navigate('/');
     }, [user]);
 };

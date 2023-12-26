@@ -13,10 +13,10 @@ const App = () => {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/registrarse" element={<RegisterForm />} />
-                <Route path="/iniciar-sesion" element={<LoginForm />} />
-                <Route path="/inicio" element={<ItemListContainer />} />
-                <Route path="/detalle/:id" element={<DetailContainer />} />
+                <Route path="/Registrarse" element={<RegisterForm />} />
+                <Route path="/Iniciar-sesion" element={<LoginForm />} />
+                <Route path="/Inicio" element={<ItemListContainer />} />
+                <Route path="/Detalle/:id" element={<DetailContainer />} />
             </Routes>
             <Footer />
         </BrowserRouter>

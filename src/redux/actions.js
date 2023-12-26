@@ -1,6 +1,8 @@
 export const actions = {
     SIGN_IN: 'SIGN_IN',
     SIGN_OUT: 'SIGN_OUT',
+    GET_CLIENTS: 'GET_CLIENTS',
+    CLEAN_CLIENTS: 'CLEAN_CLIENTS',
     GET_DETAIL: 'GET_DETAIL',
     CLEAN_DETAIL: 'CLEAN_DETAIL',
     GET_FAVORITES: 'GET_FAVORITES',
@@ -12,7 +14,8 @@ export const actions = {
     GET_PRODUCTS: 'GET_PRODUCTS',
     CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
     DELETE_FROM_CART: 'DELETE_FROM_CART',
-    ERROR: 'ERROR'
+    ERROR: 'ERROR',
+    CLEAN_ERROR: "CLEAN_ERROR"
 };
 
 // actions para los user
@@ -31,6 +34,26 @@ export const sign_out = () => {
         return dispatch({
             type: actions.SIGN_OUT,
             payload: null
+        });
+    };
+};
+
+// actions para los admin
+
+export const get_clients = (clients) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.GET_CLIENTS,
+            payload: clients
+        });
+    };
+};
+
+export const clean_clients = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CLEAN_CLIENTS,
+            payload: []
         });
     };
 };
@@ -151,6 +174,15 @@ export const put_error = (error) => {
         return dispatch({
             type: actions.ERROR,
             payload: error
+        });
+    };
+};
+
+export const clean_error = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CLEAN_ERROR,
+            payload: null
         });
     };
 };

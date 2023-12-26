@@ -1,0 +1,66 @@
+.box-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 10px;
+    background-color: #7DD181;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 10px;
+    gap: 15px;
+    border: 2px black solid;
+}
+
+.ul-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.legend {
+    font-size: 1.7rem;
+}
+
+.span-form {
+    font-size: 1.5rem;
+    color: red;
+    width: 200px;
+}
+
+.label-form {
+    font-size: 1.5rem;
+}
+
+.input-form {
+    font-size: 1.5rem;
+    border: solid 1px black;
+    padding: 6px;
+    border-radius: 15px;
+}
+
+.errorInput {
+    border: solid 2px red;
+}
+
+.box-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 0px;
+    gap: 10px;
+    width: 250px;
+}
+
+.box-pass {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
