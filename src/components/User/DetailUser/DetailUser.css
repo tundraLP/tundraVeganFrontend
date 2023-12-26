@@ -1,0 +1,51 @@
+@media screen and (min-width: 300px) {
+    .card-detail {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 270px;
+        height: 450px;
+    }
+
+    .box-data {
+        gap: 10px;
+    }
+
+    .img-detail {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .card-detail {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 600px;
+        height: 400px;
+    }
+
+    .box-data {
+        gap: 30px;
+    }
+
+    .img-detail {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.card-detail {
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    border: 2px black solid;
+}
+
+.box-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}

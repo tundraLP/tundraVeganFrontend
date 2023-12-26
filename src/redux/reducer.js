@@ -7,11 +7,12 @@ const user = {
     adress: "Avenida 15 n°4193",
     mail: "truchomail@gmail.com",
     image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
-    password: "Contrafalse123."
+    password: "Contrafalse123.",
+    type: "User"
 };
 
 const initialState = {
-    user: null,
+    user: user,
     cart: [],
     orders: [],
     favorites: [],

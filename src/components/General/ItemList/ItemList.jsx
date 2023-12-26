@@ -1,15 +1,16 @@
 import React from 'react';
-import ItemAdmin from '../../Admin/ItemAdmin/ItemAdmin';
-import ItemUser from '../../User/ItemUser/ItemUser';
+import Item from '../Item/Item';
+import { useSelector } from 'react-redux';
+import './ItemList.css'
 
-const ItemList = ({ products, user }) => {
+const ItemList = ({ products }) => {
+
+  const user = useSelector((state) => state.user);
+
   return (
-    <div>
-      {products.length && products?.map((prod) => {
-        if (user.type == 'Admin') return <ItemAdmin key={prod.id} {...prod} />
-        else return <ItemUser key={prod.id} {...prod} />
-      })}
-    </div>
+    <section className='layout'>
+      {products.length && products?.map((prod) => <Item key={prod.id} {...prod} user={user} />)}
+    </section>
   );
 };
 
