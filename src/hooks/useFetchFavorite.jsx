@@ -4,7 +4,7 @@ import { uriBack } from "../utils/const";
 import { get_favorites, put_error } from '../redux/actions';
 import axios from "axios";
 
-export const useFetchFavorite = (UserId) => {
+export const useFetchFavorite = (UserId, boolean) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,10 +13,10 @@ export const useFetchFavorite = (UserId) => {
                 const response = await axios.get(`${uriBack}/favorite/getFavoritesById?UserId=${UserId}`).then((res) => res.data);
                 dispatch(get_favorites(response));
             } catch (error) {
-                dispatch(put_error(error));
+                dispatch(put_error(error.response.data.error));
             };
         };
 
         fetchData();
-    }, []);
+    }, [boolean]);
 };

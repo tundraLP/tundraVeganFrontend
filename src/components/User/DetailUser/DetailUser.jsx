@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Buttons from '../Buttons/Buttons';
 import './DetailUser.css';
 
-const DetailUser = ({ name, stock, price, type, description, image, id }) => {
+const DetailUser = ({ name, stock, price, type, description, image, id, style, requestFavorite }) => {
 
   const [counter, setCounter] = useState(1);
 
@@ -28,7 +28,7 @@ const DetailUser = ({ name, stock, price, type, description, image, id }) => {
 
         <p className='p category'>{description}</p>
 
-        <Buttons counter={counter} increment={increment} decrement={decrement} id={id} />
+        <Buttons requestFavorite={requestFavorite} counter={counter} increment={increment} decrement={decrement} id={id} style={style} />
       </div>
 
     </div>

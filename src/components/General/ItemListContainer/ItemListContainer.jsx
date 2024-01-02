@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFetchProducts } from '../../../hooks/useFetchProducts';
 import ItemList from '../ItemList/ItemList';
+import './ItemListContainer.css';
 
 const ItemListContainer = () => {
 
@@ -10,7 +11,7 @@ const ItemListContainer = () => {
   useFetchProducts();
 
   return (
-    <main>
+    <main className='main'>
       <h2>Nuestro catálogo</h2>
       <ItemList products={products} />
     </main>

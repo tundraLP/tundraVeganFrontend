@@ -7,6 +7,7 @@ import NavBarUser from '../../User/NavBarUser/NavBarUser';
 import NavBarAdmin from '../../Admin/NavBarAdmin/NavBarAdmin';
 import LinkNavBar from '../LinkNavBar/LinkNavBar';
 import './NavBar.css';
+import Avatar from '../Avatar/Avatar';
 
 const NavBar = () => {
     const user = useSelector((state) => state.user);
@@ -47,6 +48,8 @@ const NavBar = () => {
 
                 {!user && <LinkNavBar />}
             </ul>
+
+            {user && <Avatar {...user} />}
 
         </nav >
     )

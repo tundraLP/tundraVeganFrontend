@@ -12,7 +12,7 @@ export const useRedirectHome = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        user && navigate('/inicio');
+        user && navigate('/Inicio');
     }, [user])
 
     useEffect(() => {

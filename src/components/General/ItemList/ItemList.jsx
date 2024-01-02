@@ -9,7 +9,7 @@ const ItemList = ({ products }) => {
 
   return (
     <section className='layout'>
-      {products.length && products?.map((prod) => <Item key={prod.id} {...prod} user={user} />)}
+      {products.length > 0 && products?.map((prod) => <Item key={prod.id} {...prod} user={user} />)}
     </section>
   );
 };
