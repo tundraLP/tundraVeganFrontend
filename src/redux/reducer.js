@@ -1,15 +1,19 @@
 import { actions } from "./actions";
 
 const user = {
-    id: "6e059561-c0dc-4e9b-99f0-af4ce8cd0966",
+    id: "ccc93932-835c-4d51-8f41-83f931bea10d",
+    image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
+    type: "User",
     name: "blas",
     lastName: "casale",
-    adress: "Avenida 15 n°4193",
-    mail: "truchomail@gmail.com",
-    image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
-    password: "Contrafalse123.",
-    type: "User"
+    mail: "casale.blas@live.com",
+    adress: "Camino la pindonga",
+    password: "Eminem97.",
+    updatedAt: "2023-12-29T19:34:19.804Z",
+    createdAt: "2023-12-29T19:34:19.804Z",
+    deletedAt: null
 };
+
 
 const initialState = {
     user: user,

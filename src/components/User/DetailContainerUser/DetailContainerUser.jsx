@@ -1,11 +1,20 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { add_to_cart, clean_detail, get_detail } from '../../../redux/actions';
+import { put_error } from '../../../redux/actions';
+import { useFetchFavorite } from '../../../hooks/useFetchFavorite'
 import DetailUser from '../DetailUser/DetailUser';
+import axios from 'axios';
+import { uriBack } from '../../../utils/const';
+import { useFavorites } from '../../../hooks/useFavorites';
+import { useGetDetail } from '../../../hooks/useGetDetail';
 
 const DetailContainerUser = () => {
+
+  const [style, setStyle] = useState("black");
+
+  const [boolean, setBoolean] = useState(false);
 
   const { id } = useParams();
 
@@ -15,19 +24,44 @@ const DetailContainerUser = () => {
 
   const detail = useSelector((state) => state.detail);
 
-  useEffect(() => {
+  const user = useSelector((state) => state.user);
 
-    const product = products.find((prod) => prod.id === id);
+  const favorites = useSelector((state) => state.favorites);
 
-    dispatch(get_detail(product));
+  useFetchFavorite(user.id, boolean);
 
-    return () => dispatch(clean_detail());
-  }, [id]);
+  useGetDetail(id, products);
+
+  const requestFavorite = async () => {
+    const findFavorite = favorites.find((prod) => prod.ProductId === id);
+
+    const data = {
+      UserId: user.id,
+      ProductId: id
+    };
+
+    try {
+      if (findFavorite == undefined) {
+        await axios.post(`${uriBack}/favorite/createFavorite`, data).then((res) => res.data);
+        setBoolean(!boolean);
+      };
+
+      if (findFavorite) {
+        await axios.delete(`${uriBack}/favorite/deleteFavorite`, { data: { id: findFavorite.id } }).then((res) => res.data);
+        setBoolean(!boolean);
+      };
+
+    } catch (error) {
+      dispatch(put_error(error.response.data.error));
+    };
+  };
+
+  useFavorites(boolean, favorites, id, setStyle);
 
   return (
     <section>
 
-      <DetailUser {...detail} />
+      <DetailUser {...detail} style={style} requestFavorite={requestFavorite} />
 
     </section>
   );
