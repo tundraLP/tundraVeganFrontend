@@ -1,0 +1,31 @@
+.card-loader {
+    background-color: grey;
+}
+
+.loader-img {
+    width: 200px;
+    height: 300px;
+    background-color: #fafafa;
+}
+
+.loader-name {
+    width: 100px;
+    height: 50px;
+    background-color: #fafafa;
+}
+
+.loader-price {
+    width: 80px;
+    height: 50px;
+    background-color: #fafafa;
+}
+
+.loader-desc {
+    width: 200px;
+    height: 100px;
+    background-color: #fafafa;
+}
+
+.loader {
+    border-radius: 10px;
+}

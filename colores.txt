@@ -1,6 +1,7 @@
-nyanza = #D0E3CC
-flax = #EFD780
-mantis = #7DD181
-fern green = #4B7F52
-moss green = #809848
-smoky black = #14110F
+naranja = #D7903A
+naranja oscuro = #C9451E
+bordo = #A6222E
+verde = #6C7231
+rosa claro = #CFA9A3
+violeta = #6B2140
+letra = #fafafa

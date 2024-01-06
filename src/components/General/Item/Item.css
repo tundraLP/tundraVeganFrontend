@@ -34,11 +34,16 @@
 }
 
 .card {
-    height: 400px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
     padding: 10px;
     border: solid black 2px;
+    gap: 10px;
+}
+
+.link-item {
+    color: black;
 }
