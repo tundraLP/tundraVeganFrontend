@@ -1,0 +1,15 @@
+.list-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* .list-cart:nth-child(even) {
+    background-color: aqua;
+}
+
+.list-cart:nth-child(odd) {
+    background-color: blueviolet;
+} */

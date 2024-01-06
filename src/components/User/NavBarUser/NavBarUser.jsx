@@ -9,7 +9,7 @@ const NavBarUser = () => {
         <Link className='linkNav' to={'/Inicio'}>Inicio</Link>
       </li>
       <li>
-        <Link className='linkNav' to={'/Perfil'}>Mi perfil</Link>
+        <Link className='linkNav' to={'/Mi-perfil'}>Mi perfil</Link>
       </li>
       <li>
         <Link className='linkNav' to={'/Favoritos'}>Favoritos</Link>

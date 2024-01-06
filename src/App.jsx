@@ -7,6 +7,8 @@ import DetailContainerAdmin from './components/Admin/DetailContainerAdmin/Detail
 import RegisterForm from './components/General/RegisterForm/RegisterForm';
 import LoginForm from './components/General/LoginForm/LoginForm';
 import ItemListContainer from './components/General/ItemListContainer/ItemListContainer';
+import Profile from "./components/General/Profile/Profile";
+import Cart from "./components/User/Cart/Cart";
 
 const App = () => {
     return (
@@ -19,6 +21,8 @@ const App = () => {
                 <Route path="/Inicio" element={<ItemListContainer />} />
                 <Route path="/Detalle/:id" element={<DetailContainerUser />} />
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
+                <Route path="/Mi-perfil" element={<Profile />} />
+                <Route path="/Carrito" element={<Cart />} />
             </Routes>
             <Footer />
         </BrowserRouter>

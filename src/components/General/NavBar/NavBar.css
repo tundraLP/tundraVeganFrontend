@@ -14,7 +14,7 @@
 
 .nav {
     display: flex;
-    background-color: #EFD780;
+    background-color: #6C7231;
     align-items: center;
     padding: 10px;
     gap: 25px;
@@ -22,7 +22,7 @@
 
 .link {
     text-decoration: none;
-    color: #14110F;
+    color: #fafafa;
     transition: 1s;
 }
 
