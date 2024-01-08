@@ -15,7 +15,8 @@ export const actions = {
     CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
     DELETE_FROM_CART: 'DELETE_FROM_CART',
     ERROR: 'ERROR',
-    CLEAN_ERROR: "CLEAN_ERROR"
+    CLEAN_ERROR: "CLEAN_ERROR",
+    GET_TYPES: "GET_TYPES",
 };
 
 // actions para los user
@@ -146,6 +147,18 @@ export const clean_cart = () => {
         });
     };
 };
+
+// actions para los tipos de productos.
+
+export const get_types = (types) =>{
+    return (dispatch) =>{
+        return dispatch({
+            type: actions.GET_TYPES,
+            payload: types,
+        });
+    }
+}
+
 
 // actions para los productos
 
