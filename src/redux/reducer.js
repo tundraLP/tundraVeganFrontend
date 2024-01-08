@@ -14,13 +14,13 @@ const user = {
     deletedAt: null
 };
 
-
 const initialState = {
     user: user,
     cart: [],
     orders: [],
     favorites: [],
     products: [],
+    types: [],
     clients: [],
     detail: null,
     error: null
@@ -154,6 +154,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload
+            };
+
+        case actions.GET_TYPES:
+            return {
+                ...state,
+                types: action.payload
             };
 
         // action para el error
