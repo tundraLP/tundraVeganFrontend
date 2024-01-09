@@ -9,6 +9,7 @@ import LoginForm from './components/General/LoginForm/LoginForm';
 import ItemListContainer from './components/General/ItemListContainer/ItemListContainer';
 import Profile from "./components/General/Profile/Profile";
 import Cart from "./components/User/Cart/Cart";
+import FavoriteListContainer from "./components/User/FavoriteListContainer/FavoriteListContainer";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
                 <Route path="/Mi-perfil" element={<Profile />} />
                 <Route path="/Carrito" element={<Cart />} />
+                <Route path="/Favoritos" element={<FavoriteListContainer />} />
             </Routes>
             <Footer />
         </BrowserRouter>

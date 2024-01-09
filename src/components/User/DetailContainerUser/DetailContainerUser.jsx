@@ -4,15 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { put_error } from '../../../redux/actions';
 import { useFetchFavorite } from '../../../hooks/useFetchFavorite'
-import DetailUser from '../DetailUser/DetailUser';
-import axios from 'axios';
 import { uriBack } from '../../../utils/const';
 import { useFavorites } from '../../../hooks/useFavorites';
 import { useGetDetail } from '../../../hooks/useGetDetail';
+import DetailUser from '../DetailUser/DetailUser';
+import axios from 'axios';
 
 const DetailContainerUser = () => {
-
-  const [style, setStyle] = useState("black");
 
   const [boolean, setBoolean] = useState(false);
 
@@ -56,7 +54,7 @@ const DetailContainerUser = () => {
     };
   };
 
-  useFavorites(boolean, favorites, id, setStyle);
+  const style = useFavorites(boolean, id);
 
   return (
     <section>
