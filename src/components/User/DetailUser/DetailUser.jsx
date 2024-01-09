@@ -27,6 +27,8 @@ const DetailUser = ({ name, stock, price, type, description, image, id, style, r
         <p className='p'>Quedan {stock} unidades en stock</p>
 
         <p className='p category'>{description}</p>
+        
+        <p>{id}</p>
 
         <Buttons requestFavorite={requestFavorite} counter={counter} increment={increment} decrement={decrement} id={id} style={style} />
       </div>

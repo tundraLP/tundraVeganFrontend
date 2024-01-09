@@ -1,7 +1,7 @@
 import { actions } from "./actions";
 
 const user = {
-    id: "ccc93932-835c-4d51-8f41-83f931bea10d",
+    id: "3900f3ff-85d5-4216-aed2-73d64e0a3542",
     image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
     type: "User",
     name: "blas",
@@ -9,8 +9,8 @@ const user = {
     mail: "casale.blas@live.com",
     adress: "Camino la pindonga",
     password: "Eminem97.",
-    updatedAt: "2023-12-29T19:34:19.804Z",
-    createdAt: "2023-12-29T19:34:19.804Z",
+    updatedAt: "2024-01-09T13:57:16.292Z",
+    createdAt: "2024-01-09T13:57:16.292Z",
     deletedAt: null
 };
 
