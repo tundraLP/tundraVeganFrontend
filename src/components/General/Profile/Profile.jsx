@@ -1,14 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import './Profile.css';
+import InfoUser from '../InfoUser/InfoUser';
 
 const Profile = () => {
 
-    const user = useSelector((state) => state.user);
-    
     return (
-        <section>
-
-        </section>
+        <section className='section-profile'>
+            <InfoUser />
+        </section >
     );
 };
 

@@ -9,14 +9,15 @@ import { useNavigate } from 'react-router-dom';
 import ButtonShown from '../ButtonShown/ButtonShown';
 import axios from 'axios';
 import './RegisterForm.css';
+import Input from '../Input/Input';
 
 const RegisterForm = () => {
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     return () => dispatch(clean_error());
   }, []);
-
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -84,56 +85,91 @@ const RegisterForm = () => {
       <legend className='legend'>Ingresa tus datos:</legend>
       <ul className='ul-form'>
 
-        <li className='box-input'>
-          <label htmlFor="name" className='label-form'>Nombre:</label>
-          <input type="text" id="name" value={input.name} name="name" onChange={handleInput} className={`${style} input-form`} />
-          <span className="span-form">{errorInput.name}</span>
-        </li>
+        <Input
+          errorInput={errorInput.name}
+          handleInput={handleInput}
+          id={"name"}
+          label={"Nombre:"}
+          name={"name"}
+          style={style.name}
+          type={"text"}
+          value={input.name}
+          key={"name"}
+          button={false}
+        />
 
-        <li className='box-input'>
-          <label htmlFor="lastName" className='label-form'>Apellido:</label>
-          <input type="text" id="lastName" value={input.lastName} name="lastName" onChange={handleInput} className={`${style} input-form`} />
-          <span className="span-form">{errorInput.lastName}</span>
-        </li>
+        <Input
+          errorInput={errorInput.lastName}
+          handleInput={handleInput}
+          id={"lastName"} label={"Apellido:"}
+          name={"lastName"}
+          style={style.lastName}
+          type={"text"}
+          value={input.lastName}
+          key={"lastName"}
+          button={false}
+        />
 
-        <li className='box-input'>
-          <label htmlFor="mail" className='label-form'>Mail:</label>
-          <input type="email" id="mail" value={input.mail} name="mail" onChange={handleInput} className={`${style} input-form`} />
-          <span className="span-form">{errorInput.mail}</span>
-        </li>
+        <Input
+          errorInput={errorInput.mail}
+          handleInput={handleInput}
+          id={"mail"}
+          label={"Mail:"}
+          name={"mail"}
+          style={style.mail}
+          type={"email"}
+          value={input.mail}
+          key={"mail"}
+          button={false}
+        />
 
-        <li className='box-input'>
-          <label htmlFor="adress" className='label-form'>Dirección:</label>
-          <input type="text" id="adress" value={input.adress} name="adress" onChange={handleInput} className={`${style} input-form`} />
-          <span className="span-form">{errorInput.adress}</span>
-        </li>
+        <Input
+          errorInput={errorInput.adress}
+          handleInput={handleInput}
+          id={"adress"}
+          label={"Dirección:"}
+          name={"adress"}
+          style={style.adress}
+          type={"text"}
+          value={input.adress}
+          key={"adress"}
+          button={false}
+        />
 
-        <li className='box-input'>
-          <label htmlFor="password" className='label-form'>Contraseña:</label>
-          <div className='box-pass'>
-            <input type={shown.password ? "text" : "password"} id="password" value={input.password} name="password" onChange={handleInput} className={`${style} input-form`} />
-            <ButtonShown boolean={shown.password} handleClick={handleClick} input={'password'} />
-          </div>
-          <span className="span-form">{errorInput.password}</span>
-        </li>
+        <Input
+          errorInput={errorInput.password}
+          handleInput={handleInput}
+          id={"password"}
+          label={"Contraseña:"}
+          name={"password"}
+          style={style.password}
+          type={shown.password ? "text" : "password"}
+          value={input.password}
+          key={"password"}
+          button={<ButtonShown boolean={shown.password} handleClick={handleClick} input={'password'} />}
+        />
 
-        <li className='box-input'>
-          <label htmlFor="confirmPassword" className='label-form'>Repetir contraseña:</label>
-          <div className='box-pass'>
-            <input type={shown.confirmPassword ? "text" : "password"} id="confirmPassword" value={input.confirmPassword} name="confirmPassword" onChange={handleInput} className={`${style} input-form`} />
-            <ButtonShown boolean={shown.confirmPassword} handleClick={handleClick} input={'confirmPassword'} />
-          </div>
-          <span className="span-form">{errorInput.confirmPassword}</span>
-        </li>
+        <Input
+          errorInput={errorInput.confirmPassword}
+          handleInput={handleInput}
+          id={"confirmPassword"}
+          label={"Repetir contraseña:"}
+          name={"confirmPassword"}
+          style={style.confirmPassword}
+          type={shown.confirmPassword ? "text" : "password"}
+          value={input.confirmPassword}
+          key={"confirmPassword"}
+          button={<ButtonShown boolean={shown.confirmPassword} handleClick={handleClick} input={'confirmPassword'} />}
+        />
 
-      </ul>
+      </ul >
 
       <span className='span-form'>{errorInput.passNoMatch}</span>
 
       <span className='span-form'>{error}</span>
 
       <button disabled={!validateBoolean}>Enviar</button>
-    </form>
+    </form >
   );
 };
 

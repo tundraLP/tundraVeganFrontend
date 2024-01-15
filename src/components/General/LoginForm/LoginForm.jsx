@@ -5,9 +5,9 @@ import { styleError } from '../../../utils/styleError';
 import { validateInput } from '../../../utils/validateInput';
 import { clean_error, put_error, sign_in } from '../../../redux/actions';
 import ButtonShown from '../ButtonShown/ButtonShown';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { uriBack } from '../../../utils/const';
+import Input from '../Input/Input';
 
 const LoginForm = () => {
 
@@ -74,22 +74,31 @@ const LoginForm = () => {
   return (
     <form className='form' onSubmit={handleSubmit}>
 
-      <div className="box-input">
-        <label htmlFor="mail" className='label-form'>Mail:</label>
-        <input type="email" value={input.mail} id='mail' name='mail' onChange={handleInput} className={`${style} input-form`} />
-        <span className='span-form'>{errorInput.mail}</span>
-      </div>
+      <Input
+        button={false}
+        errorInput={errorInput.mail}
+        handleInput={handleInput}
+        id={"mail"}
+        label={"Mail:"}
+        name={"mail"}
+        style={style.mail}
+        type={"email"}
+        value={input.mail}
+        key={"mail"}
+      />
 
-      <div className="box-input">
-        <label htmlFor="password" className='label-form'>Contraseña:</label>
-
-        <div className='box-pass'>
-          <input type={shown.password ? "text" : "password"} value={input.password} id='password' name='password' onChange={handleInput} className={`${style} input-form`} />
-          <ButtonShown boolean={shown.password} handleClick={handleClick} input={'password'} />
-        </div>
-
-        <span className='span-form'>{errorInput.password}</span>
-      </div>
+      <Input
+        button={<ButtonShown boolean={shown.password} handleClick={handleClick} input={'password'} />}
+        errorInput={errorInput.password}
+        handleInput={handleInput}
+        id={"password"}
+        label={"Contraseña:"}
+        name={"password"}
+        style={style.password}
+        type={shown.password ? "text" : "password"}
+        value={input.password}
+        key={"password"}
+      />
 
       <span className='span-form'>{error}</span>
 

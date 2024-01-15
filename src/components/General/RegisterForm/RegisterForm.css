@@ -14,6 +14,7 @@
     padding: 10px 10px;
     gap: 15px;
     border: 2px black solid;
+    background: linear-gradient(180deg, rgba(207,169,163,1) 22%, rgba(195,153,151,1) 53%, rgba(107,33,64,1) 99%);
 }
 
 .ul-form {

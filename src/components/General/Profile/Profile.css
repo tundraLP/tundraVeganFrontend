@@ -1,0 +1,10 @@
+.section-profile .box-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+.box-profile {
+    gap: 20px;
+}

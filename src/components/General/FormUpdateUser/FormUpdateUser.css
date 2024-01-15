@@ -1,0 +1,26 @@
+.form-update {
+    width: 270px;
+    border-radius: 20px;
+}
+
+.section-update {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px;
+}
+
+.button-form {
+    background-color: #D7903A;
+    color: #fafafa;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.button-form:hover {
+    background-color: #daaa70;
+    color: black;
+}
