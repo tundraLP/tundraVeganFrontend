@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export const useFavorites = (boolean, id) => {
+export const useFavorites = (id) => {
 
     const [style, setStyle] = useState("");
 
@@ -10,14 +10,11 @@ export const useFavorites = (boolean, id) => {
     useEffect(() => {
         const product = favorites.find((prod) => prod.ProductId === id);
 
-        product.deletedAt == null && setStyle("red");
-    }, [boolean]);
-
-    useEffect(() => {
-        const product = favorites.find((prod) => prod.ProductId === id);
-
-        product.deletedAt != null && setStyle("black");
-    }, [boolean])
+        if (product){
+            product.deletedAt == null && setStyle("red");
+            product.deletedAt != null && setStyle("black");
+        };
+    }, [favorites]);
 
     return style;
 };

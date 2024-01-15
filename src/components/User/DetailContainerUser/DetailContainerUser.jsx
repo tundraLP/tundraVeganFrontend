@@ -26,7 +26,7 @@ const DetailContainerUser = () => {
 
   const favorites = useSelector((state) => state.favorites);
 
-  useFetchFavorite(user.id, boolean);
+  useFetchFavorite(user && user.id, boolean);
 
   useGetDetail(id, products);
 
@@ -34,7 +34,7 @@ const DetailContainerUser = () => {
     const findFavorite = favorites.find((prod) => prod.ProductId === id);
 
     const data = {
-      UserId: user.id,
+      UserId: user && user.id,
       ProductId: id
     };
 
@@ -54,7 +54,7 @@ const DetailContainerUser = () => {
     };
   };
 
-  const style = useFavorites(boolean, id);
+  const style = useFavorites(id);
 
   return (
     <section>

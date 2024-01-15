@@ -1,0 +1,8 @@
+.article-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 20px 10px;
+    gap: 15px;
+}
