@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Buttons from '../Buttons/Buttons';
 import './DetailUser.css';
 
-const DetailUser = ({ name, stock, price, type, description, image, id, style, requestFavorite }) => {
+const DetailUser = ({ name, stock, price, Type, description, image, id, style, requestFavorite }) => {
 
   const [counter, setCounter] = useState(1);
 
@@ -18,17 +18,15 @@ const DetailUser = ({ name, stock, price, type, description, image, id, style, r
       <div className='box-data'>
         <h4>{name}</h4>
 
-        <p className='p category'>Categoría: {type}</p>
+        <p className='p category'>Categoría: {Type.name}</p>
 
-        <p className='p price'>Precio por unidad: ${price}</p>
+        <p className='p price'>Precio por unidad: ${price.slice(0, -3)}</p>
 
         <p className='p price'>Precio total: ${price * counter}</p>
 
         <p className='p'>Quedan {stock} unidades en stock</p>
 
         <p className='p category'>{description}</p>
-        
-        <p>{id}</p>
 
         <Buttons requestFavorite={requestFavorite} counter={counter} increment={increment} decrement={decrement} id={id} style={style} />
       </div>

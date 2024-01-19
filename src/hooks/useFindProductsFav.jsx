@@ -10,9 +10,17 @@ export const useFindProductsFav = () => {
 
     useEffect(() => {
         setRender([]);
-        favorites?.map((fav) => {
+        favorites?.forEach((fav) => {
             const prod = products.find((prod) => prod.id === fav.ProductId);
-            setRender(prev => [...prev, prod]);
+            if (prod) {
+                const newProd = {
+                    ...prod,
+                    ProductId: fav.ProductId,
+                    id: fav.id,
+                    deletedAt: fav.deletedAt,
+                };
+                if (fav.deletedAt == null) setRender(prev => [...prev, newProd]);
+            };
         });
     }, [favorites]);
 

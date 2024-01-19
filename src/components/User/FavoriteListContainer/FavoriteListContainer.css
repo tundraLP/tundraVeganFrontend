@@ -1,0 +1,13 @@
+.section-favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px;
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705500647/Utils/Acelga.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

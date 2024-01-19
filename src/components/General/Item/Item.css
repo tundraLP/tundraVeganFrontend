@@ -4,21 +4,22 @@
     }
 }
 
-@media screen and (min-width: 580px) {
+@media screen and (min-width: 600px) {
     .card {
         width: 250px;
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 680px) {
     .card {
         width: 270px;
     }
 }
 
 .img {
-    width: 60px;
-    height: 60px;
+    width: 260px;
+    height: 200px;
+    border-radius: 20px;
 }
 
 .p {
@@ -30,20 +31,32 @@
 }
 
 .category {
-    color: grey;
+    color: black;
+}
+
+.title-card {
+    height: 60px;
 }
 
 .card {
-    height: 420px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
+    gap: 10px;
     padding: 10px;
     border: solid black 2px;
-    gap: 10px;
+    border-radius: 20px;
+    background-color: rgba(209, 204, 204, 0.864);
+    transition: 0.5s;
+}
+
+.card:hover {
+    box-shadow: 8px 6px rgba(138, 137, 137, 0.818);
 }
 
 .link-item {
     color: black;
+    text-decoration: none;
 }

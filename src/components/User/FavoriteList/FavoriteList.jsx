@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFetchFavorite } from '../../../hooks/useFetchFavorite';
-import { useFindProductsFav } from '../../../hooks/useFindProductsFav'
+import { useFindProductsFav } from '../../../hooks/useFindProductsFav';
 import { put_error } from '../../../redux/actions';
 import { uriBack } from '../../../utils/const';
 import axios from 'axios';
@@ -30,13 +30,13 @@ const FavoriteList = () => {
   const render = useFindProductsFav();
 
   return (
-    <div>
+    <ul className='layout'>
       {
-        render.length > 0 ?
+        render.length ?
           render.map((fav) => <Favorite key={fav.id} {...fav} deleteFavorite={deleteFavorite} />)
           : <h3>No tenes favoritos</h3>
       }
-    </div>
+    </ul>
   );
 };
 

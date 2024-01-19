@@ -10,7 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    padding: 1px 10px;
+    border: solid 2px #CFA9A3;
+    border-radius: 5px;
 }
 
 .box-buttons {
@@ -18,6 +21,19 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    width: 260px;
+}
+
+.button-counter {
+    font-size: 28px;
+    border: none;
+    color: #D7903A;
+    background-color: transparent;
+    transition: 0.5s;
+}
+
+.button-counter:hover {
+    color: #C9451E;
 }
 
 .red {
@@ -26,4 +42,9 @@
 
 .black {
     color: black;
+}
+
+.counter {
+    font-size: 1.6rem;
+    font-weight: 530;
 }

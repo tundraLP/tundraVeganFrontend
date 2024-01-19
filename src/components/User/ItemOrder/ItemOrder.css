@@ -1,0 +1,14 @@
+@media screen and (min-width: 300px) {
+    .box-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border: 2px #6C7231 solid;
+        border-radius: 15px;
+        padding: 8px;
+        width: 240px;
+    }
+
+}

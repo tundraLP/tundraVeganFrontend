@@ -8,11 +8,11 @@
 @media screen and (min-width: 600px) {
     .layout {
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        gap: 25px;
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 960px) {
     .layout {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;

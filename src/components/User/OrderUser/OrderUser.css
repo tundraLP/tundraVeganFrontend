@@ -1,0 +1,49 @@
+.box-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-id {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.id {
+    text-align: center;
+}
+
+.card-order {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid black 2px;
+    border-radius: 20px;
+    background-color: rgba(209, 204, 204, 0.864);
+    transition: 0.5s;
+}
+
+.card-order:hover {
+    box-shadow: 8px 6px rgba(138, 137, 137, 0.818);
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.box-state {
+    display: flex;
+    gap: 4px;
+}
