@@ -9,6 +9,7 @@ import { useFavorites } from '../../../hooks/useFavorites';
 import { useGetDetail } from '../../../hooks/useGetDetail';
 import DetailUser from '../DetailUser/DetailUser';
 import axios from 'axios';
+import './DetailContainerUser.css';
 
 const DetailContainerUser = () => {
 
@@ -57,9 +58,9 @@ const DetailContainerUser = () => {
   const style = useFavorites(id);
 
   return (
-    <section>
+    <section className='detail-container'>
 
-      <DetailUser {...detail} style={style} requestFavorite={requestFavorite} />
+      {detail && <DetailUser {...detail} style={style} requestFavorite={requestFavorite} />}
 
     </section>
   );

@@ -2,7 +2,7 @@
     .card-detail {
         flex-direction: column;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items: center;
         width: 270px;
         height: 450px;
     }
@@ -12,12 +12,18 @@
     }
 
     .img-detail {
-        width: 150px;
-        height: 150px;
+        width: 260px;
+        height: 200px;
     }
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 430px) {
+    .card-detail {
+        width: 380px;
+    }
+}
+
+@media screen and (min-width: 670px) {
     .card-detail {
         flex-direction: row;
         justify-content: space-around;
@@ -41,6 +47,8 @@
     padding: 10px;
     display: flex;
     border: 2px black solid;
+    border-radius: 20px;
+    background-color: rgba(209, 204, 204, 0.864);
 }
 
 .box-data {

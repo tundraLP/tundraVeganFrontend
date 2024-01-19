@@ -1,0 +1,11 @@
+.detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705420519/Utils/Flores.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
