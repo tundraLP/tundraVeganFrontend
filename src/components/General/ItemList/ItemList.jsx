@@ -9,15 +9,22 @@ const ItemList = ({ products }) => {
   const user = useSelector((state) => state.user);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const quantityPerPage = 6;
+  const [quantityPerPage, setQuantityPerPage] = useState(6);
   const totalPages = Math.ceil(products.length / quantityPerPage);
 
   const firstIndex = (currentPage - 1) * quantityPerPage;
   const lastIndex = Math.min(firstIndex + quantityPerPage, products.length);
 
+  const quantityOptions = [ 6, 12, 100 ];
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const handleQuantityChange = (num) =>{
+    setQuantityPerPage(num);
+    setCurrentPage(1);
+  }
 
   return (
     <>
@@ -32,6 +39,13 @@ const ItemList = ({ products }) => {
         {products.length > 0 &&
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
         }
+        {
+         quantityOptions.map((option)=>
+         (<button key={option} 
+            className={option === quantityPerPage ? 'active' : ''} 
+            onClick={() => handleQuantityChange(option)}
+            disabled={option === quantityPerPage}
+         >{option}</button> ))}
       </section>
     </>
   );
