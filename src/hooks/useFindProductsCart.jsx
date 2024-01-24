@@ -11,11 +11,14 @@ export const useFindProductsCart = () => {
     useEffect(() => {
         setRender([]);
 
-        cart?.map((prod) => {
+        cart?.forEach((prod) => {
             const product = products.find((pro) => pro.id === prod.id);
-            product.count = prod.count;
-            setRender(prev => [...prev, product]);
-        })
+            const newProd = {
+                ...product,
+                count: prod.count
+            };
+            setRender(prev => [...prev, newProd]);
+        });
     }, [cart]);
 
     return render;

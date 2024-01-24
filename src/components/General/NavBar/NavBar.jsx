@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useRedirectHome } from '../../../hooks/useRedirectHome';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useSelector } from 'react-redux';
 import NavBarUser from '../../User/NavBarUser/NavBarUser';
 import NavBarAdmin from '../../Admin/NavBarAdmin/NavBarAdmin';
@@ -13,8 +14,11 @@ const NavBar = () => {
     const user = useSelector((state) => state.user);
 
     const cart = useSelector((state) => state.cart);
+    
+    useLocalStorage();
 
     useEffect(() => {
+
         if (user) {
             const date = new Date();
 

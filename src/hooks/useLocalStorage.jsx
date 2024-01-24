@@ -8,6 +8,8 @@ export const useLocalStorage = () => {
 
     const user = useSelector((state) => state.user);
 
+    const products = useSelector((state) => state.products);
+
     const date = new Date();
 
     const day = date.getDate();
@@ -18,9 +20,20 @@ export const useLocalStorage = () => {
 
             if (cartLS) {
                 const parsed = JSON.parse(cartLS);
-                if (parsed.day == day && user.id == parsed.id) dispatch(add_to_cart(parsed.cart));
-                else dispatch(clean_cart());
-            };
+
+                if (parsed.day == day && user.id == parsed.id) {
+                    parsed.cart.forEach((prod) => {
+                        const newProd = products.find((pro) => pro.id === prod.id);
+
+                        const pushedProd = {
+                            ...newProd,
+                            count: prod.count
+                        };
+
+                        if (newProd) dispatch(add_to_cart(pushedProd));
+                    });
+                }
+            }
         };
     }, [user]);
 };

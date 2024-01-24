@@ -10,6 +10,7 @@ export const actions = {
     GET_ORDERS: 'GET_ORDERS',
     CLEAN_ORDERS: 'CLEAN_ORDERS',
     ADD_TO_CART: 'ADD_TO_CART',
+    UPDATE_QUANTITY: 'UPDATE_QUANTITY',
     CLEAN_CART: 'CLEAN_CART',
     GET_PRODUCTS: 'GET_PRODUCTS',
     CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
@@ -133,8 +134,17 @@ export const add_to_cart = (item) => {
 export const delete_from_cart = (itemId) => {
     return (dispatch) => {
         return dispatch({
-            type: 'DELETE_FROM_CART',
+            type: actions.DELETE_FROM_CART,
             payload: itemId
+        });
+    };
+};
+
+export const update_quantity = ({ id, count }) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.UPDATE_QUANTITY,
+            payload: { id, count }
         });
     };
 };
@@ -150,8 +160,8 @@ export const clean_cart = () => {
 
 // actions para los tipos de productos.
 
-export const get_types = (types) =>{
-    return (dispatch) =>{
+export const get_types = (types) => {
+    return (dispatch) => {
         return dispatch({
             type: actions.GET_TYPES,
             payload: types,
