@@ -7,8 +7,6 @@ export const useFindProductsOrder = (id) => {
 
     const orders = useSelector((state) => state.orders);
 
-    const products = useSelector((state) => state.products);
-
     useEffect(() => {
         const order = orders.find((order) => order.id === id);
 

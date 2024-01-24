@@ -12,13 +12,11 @@ const OrderListUser = () => {
 
     useFetchOrder(user.id);
 
-    console.log(orders)
-
     return (
-        <section className='layout'>
+        <section className='orders'>
             {
                 orders.length > 0 ?
-                    orders?.map((order) => <OrderUser key={order.id} {...order} />) :
+                    orders?.map((order) => < OrderUser key={order.id} {...order} />) :
                     <h3>Todavia no tenes ordenes</h3>
             }
         </section>

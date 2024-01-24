@@ -1,17 +1,25 @@
 import React from 'react';
 import './CartItem.css';
+import ButtonsCart from '../ButtonsCart/ButtonsCart';
 
-const CartItem = ({ name, price, count, id, deleteItem }) => {
+const CartItem = ({ name, price, count, id, deleteItem, image, stock }) => {
 
     return (
         <li className='card-cart'>
-            <p>{name}</p>
-            <p>Cantidad: {count}</p>
-            <p>Precio por unidad: ${price}</p>
-            <p>Total: ${price * count}</p>
-            <button onClick={() => deleteItem(id)}>Borrar</button>
-        </li>
-    )
-}
+            <div className='box-img-cart'>
+                <img src={image} alt={name} className='img-cart' />
+                <p className='p-cart'>{name}</p>
+            </div>
+            <div className='box-info-cart'>
+                <div className='box-price-cart'>
+                    <p className='p-cart'>Cantidad: {count}</p>
+                    <p className='p-cart'>${price.slice(0, -3)}</p>
+                </div>
 
-export default CartItem
+                <ButtonsCart deleteItem={deleteItem} id={id} count={count} stock={stock}/>
+            </div>
+        </li>
+    );
+};
+
+export default CartItem;

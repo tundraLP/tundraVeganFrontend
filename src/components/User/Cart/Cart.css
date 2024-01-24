@@ -1,0 +1,41 @@
+.back-cart {
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705500589/Utils/EsloganVerde.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 35px 0px;
+}
+
+.box-cart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.span-total {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #A6222E;
+    color: #fafafa;
+    font-size: 1.5rem;
+}
+
+.toasty {
+    border: 2px solid #6C7231;
+}
+
+.toasty-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #000000;
+}
+

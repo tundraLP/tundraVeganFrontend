@@ -1,7 +1,7 @@
-.orders {
+.box-buttons-cart-buy {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
