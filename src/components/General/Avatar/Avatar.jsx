@@ -11,8 +11,8 @@ const Avatar = ({ name, lastName, image }) => {
     return (
         <div className='box-avatar'>
             <img src={image} alt={`${name} ${lastName}`} className='img-avatar' />
-            <span className='p'>{name} {lastName}</span>
-            <button onClick={signOut}>Cerrar sesión</button>
+            <span className='p avatar-name'>{name} {lastName}</span>
+            <button className='button-close-session' onClick={signOut}>Cerrar sesión</button>
         </div>
     );
 };

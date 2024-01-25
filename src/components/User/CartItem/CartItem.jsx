@@ -16,7 +16,7 @@ const CartItem = ({ name, price, count, id, deleteItem, image, stock }) => {
                     <p className='p-cart'>${price.slice(0, -3)}</p>
                 </div>
 
-                <ButtonsCart deleteItem={deleteItem} id={id} count={count} stock={stock}/>
+                <ButtonsCart deleteItem={deleteItem} id={id} count={count} stock={stock} name={name}/>
             </div>
         </li>
     );
