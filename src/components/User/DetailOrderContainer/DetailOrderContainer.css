@@ -1,0 +1,13 @@
+.section-detail-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    gap: 20px;
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705500551/Utils/EsloganNaranja.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

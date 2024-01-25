@@ -2,12 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './OrderUser.css';
+import { months } from '../../../utils/const'
 
 const OrderUser = ({ state, total, id, createdAt }) => {
 
     const [date, setDate] = useState("");
-
-    const months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
     useEffect(() => {
         let completeDate = "";
