@@ -12,6 +12,7 @@ import Cart from "./components/User/Cart/Cart";
 import FavoriteListContainer from "./components/User/FavoriteListContainer/FavoriteListContainer";
 import OrderListContainer from './components/General/OrderListContainer/OrderListContainer';
 import FormUpdateUser from './components/General/FormUpdateUser/FormUpdateUser';
+import DetailOrderContainer from "./components/User/DetailOrderContainer/DetailOrderContainer";
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/Favoritos" element={<FavoriteListContainer />} />
                 <Route path="/Ordenes" element={<OrderListContainer />} />
                 <Route path="/Actualizar-usuario" element={<FormUpdateUser />} />
+                <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
             </Routes>
             <Footer />
         </BrowserRouter>
