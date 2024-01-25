@@ -1,23 +1,7 @@
 .pagination {
   list-style: none;
   display: flex;
-  padding: 0;
-}
-
-.pagination li {
-  margin-right: 5px;
-}
-
-.pagination button {
-  padding: 10px 15px; /* Ajusta el tamaño aquí */
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  font-size: 14px; /* Ajusta el tamaño de la fuente aquí */
-}
-
-.pagination li.active button {
-  background-color: #007bff;
-  color: #fff;
-  border: 1px solid #007bff;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }

@@ -1,0 +1,17 @@
+.li-pagination-container {
+    list-style: none;
+}
+
+.button-pagination {
+    border: #6C7231 solid 2px;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #D7903A;
+    color: #fafafa;
+    transition: 0.7s;
+}
+
+.button-pagination:hover {
+    background-color: #C9451E;
+}

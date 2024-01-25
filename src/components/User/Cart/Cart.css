@@ -39,3 +39,16 @@
     color: #000000;
 }
 
+.button-empty-cart {
+    border: 2px solid #6B2140;
+    background-color: #C9451E;
+    color: #fafafa;
+    padding: 4px;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+
+.button-empty-cart:hover {
+    border: #6b2140db solid 2px;
+    background-color: #c9461ed3;
+}

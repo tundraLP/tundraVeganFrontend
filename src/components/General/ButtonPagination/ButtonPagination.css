@@ -1,0 +1,19 @@
+.button-option-quantity {
+    background-color: #D7903A;
+    color: #fafafa;
+    border: 2px solid #6C7231;
+    padding: 2px;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+    border-radius: 18px;
+    transition: 0.7s;
+}
+
+.button-option-quantity:hover {
+    background-color: #C9451E;
+}
+
+.active-button-quantity {
+    background-color: #C9451E;
+}

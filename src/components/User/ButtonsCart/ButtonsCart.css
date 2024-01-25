@@ -5,3 +5,22 @@
     align-items: center;
     gap: 10px;
 }
+
+.counter-cart {
+    color: #fafafa;
+    font-size: 1.5rem;
+}
+
+.button-update-cart {
+    border: #fafafa solid 1px;
+    padding: 6px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: #D7903A;
+    color: #fafafa;
+    transition: 0.7s;
+}
+
+.button-update-cart:hover {
+    background-color: #d89748eb;
+}

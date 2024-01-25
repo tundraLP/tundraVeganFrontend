@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { update_quantity } from '../../../redux/actions';
 import './ButtonsCart.css';
 
-const ButtonsCart = ({ deleteItem, id, count, stock }) => {
+const ButtonsCart = ({ deleteItem, id, count, stock, name }) => {
 
     const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const ButtonsCart = ({ deleteItem, id, count, stock }) => {
     const decrement = () => counter > 1 && setCounter(counter - 1);
 
     const notification = () => {
-        toast.info('Se actualizo la cantidad.', {
+        toast.info(`Se actualizo la cantidad de ${name}`, {
             position: 'bottom-right',
             autoClose: 5000,
             hideProgressBar: true,
@@ -27,7 +27,7 @@ const ButtonsCart = ({ deleteItem, id, count, stock }) => {
             icon: false
         });
     };
-    
+
     const updateCart = () => {
         if (counter != count) {
             dispatch(update_quantity({ id: id, count: counter }));
@@ -48,11 +48,11 @@ const ButtonsCart = ({ deleteItem, id, count, stock }) => {
 
             <div className='box-update-cart'>
                 <button className='button-counter' onClick={decrement}>-</button>
-                <span>{counter}</span>
+                <span className='counter-cart'>{counter}</span>
                 <button className='button-counter' onClick={increment}>+</button>
             </div>
 
-            <button onClick={updateCart}>Actualizar carrito</button>
+            <button onClick={updateCart} className='button-update-cart'>Actualizar carrito</button>
 
         </div>
     );

@@ -17,8 +17,6 @@ const Cart = () => {
 
     const total = render.reduce((prev, prod) => prev + (prod.price * prod.count), 0);
 
-    console.log(render)
-
     return (
         <section className='back-cart'>
 
@@ -28,8 +26,9 @@ const Cart = () => {
 
             <div className='box-cart'>
                 <span className='span-total'>El total de la compra es ${total}</span>
-                <button onClick={emptyCart}>Limpiar carrito</button>
+                <button onClick={emptyCart} className='button-empty-cart'>Limpiar carrito</button>
             </div>
+            
             <ToastContainer
                 position='bottom-right'
                 autoClose={4000}
