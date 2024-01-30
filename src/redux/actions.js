@@ -18,6 +18,7 @@ export const actions = {
     ERROR: 'ERROR',
     CLEAN_ERROR: "CLEAN_ERROR",
     GET_TYPES: "GET_TYPES",
+    CHANGE_BOOLEAN_TOASTY: 'CHANGE_BOOLEAN_TOASTY'
 };
 
 // actions para los user
@@ -206,6 +207,17 @@ export const clean_error = () => {
         return dispatch({
             type: actions.CLEAN_ERROR,
             payload: null
+        });
+    };
+};
+
+// action para cambiar el boolean del toasty
+
+export const change_boolean_toasty = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CHANGE_BOOLEAN_TOASTY,
+            payload: false
         });
     };
 };

@@ -23,7 +23,8 @@ const initialState = {
     types: [],
     clients: [],
     detail: null,
-    error: null
+    error: null,
+    booleanToasty: false
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -119,14 +120,14 @@ export const rootReducer = (state = initialState, action) => {
 
             const findProduct = state.cart.find((prod) => prod.id === newProduct.id);
 
-            // aca falta agregar una notificacion para que el usuario sepa que el producto ya fue pusheado al carrito antes
-            if (findProduct != undefined) return state
-            else {
+            if (findProduct == undefined) {
                 return {
                     ...state,
-                    cart: [...state.cart, newProduct]
+                    cart: [...state.cart, newProduct],
+                    booleanToasty: true
                 };
-            };
+            }
+            else return state;
 
         case actions.DELETE_FROM_CART:
             const filteredCart = state.cart.filter((prod) => prod.id != action.payload);
@@ -191,6 +192,14 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload
+            };
+
+        // action para cambiar el estado toasty y poder mostrar la alerta
+
+        case actions.CHANGE_BOOLEAN_TOASTY:
+            return {
+                ...state,
+                booleanToasty: action.payload
             };
 
         default:
