@@ -4,7 +4,7 @@ export class Client {
         this.lastName = lastName;
         this.mail = mail;
         this.adress = adress;
-        this.image = image;
+        this.image = null ? null : image;
         this.password = password;
         this.type = type;
         this.UserId = UserId == null ? null : UserId

@@ -11,3 +11,50 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.selects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.box-selects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.label-selects {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.select-item {
+    border-radius: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 2px;
+    padding: 5px;
+    border: 2px solid #D7903A;
+    transition: 0.5s;
+}
+
+.select-item:focus {
+    outline: none;
+    border-color: #C9451E;
+}
+
+.select-item option {
+    background-color: #CFA9A3;
+    color: #fafafa;
+    border: none;
+}
+
+.box-selector {
+    border-radius: 15px;
+}
