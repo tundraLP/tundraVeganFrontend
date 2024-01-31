@@ -15,7 +15,7 @@ export const styleError = (error, style) => {
     else style.adress = "";
 
     if (error.password != "") style.password = errorInput;
-    else error.password = "";
+    else style.password = "";
 
     if (error.confirmPassword != "") style.confirmPassword = errorInput;
     else style.confirmPassword = "";
