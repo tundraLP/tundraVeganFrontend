@@ -18,6 +18,7 @@ export const actions = {
     ERROR: 'ERROR',
     CLEAN_ERROR: "CLEAN_ERROR",
     GET_TYPES: "GET_TYPES",
+    CHANGE_BOOLEAN_TOASTY: 'CHANGE_BOOLEAN_TOASTY',
     FILTER_BY_TYPE: "FILTER_BY_TYPE",
     ORDER: "ORDER",
     RESET_PRODUCTS: "RESET_PRODUCTS",
@@ -213,6 +214,17 @@ export const clean_error = () => {
     };
 };
 
+// action para cambiar el boolean del toasty
+
+export const change_boolean_toasty = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CHANGE_BOOLEAN_TOASTY,
+            payload: false
+        });
+    };
+};
+
 // action para filtros y ordenamientos
 
 export const filter_by_type = (productsToRender, type, products) => {
@@ -224,9 +236,8 @@ export const filter_by_type = (productsToRender, type, products) => {
             type: actions.FILTER_BY_TYPE,
             payload: response,
         });
-
-    }
-}
+    };
+};
 
 export const order_by_name = (products) => {
     return async (dispatch) => {
@@ -239,8 +250,9 @@ export const order_by_name = (products) => {
             type: actions.ORDER,
             payload: response
         });
-    }
-}
+    };
+};
+
 export const order_by_name_backwards = (products) => {
     return (dispatch) => {
         const response= products?.slice().sort((a, b) => {
@@ -252,8 +264,9 @@ export const order_by_name_backwards = (products) => {
             type: actions.ORDER,
             payload: response
         });
-    }
-}
+    };
+};
+
 export const order_by_price = (products) => {
     return (dispatch) => {
         const response= products?.slice().sort((a, b) => {
@@ -265,8 +278,9 @@ export const order_by_price = (products) => {
             type: actions.ORDER,
             payload: response
         });
-    }
-}
+    };
+};
+
 export const order_by_price_backwards = (products) => {
     return (dispatch) => {
         const response= products?.slice().sort((a, b) => {
@@ -278,8 +292,8 @@ export const order_by_price_backwards = (products) => {
             type: actions.ORDER,
             payload: response
         });
-    }
-}
+    };
+};
 
 export const reset_products = (products) => {
     return (dispatch) => {
@@ -287,5 +301,5 @@ export const reset_products = (products) => {
             type: actions.RESET_PRODUCTS,
             payload: products,
         });
-    }
-}
+    };
+};

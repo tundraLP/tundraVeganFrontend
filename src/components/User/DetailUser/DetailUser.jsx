@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Buttons from '../Buttons/Buttons';
 import './DetailUser.css';
 
@@ -28,7 +29,15 @@ const DetailUser = ({ name, stock, price, Type, description, image, id, style, r
 
         <p className='p category'>{description}</p>
 
-        <Buttons requestFavorite={requestFavorite} counter={counter} increment={increment} decrement={decrement} id={id} style={style} />
+        <Buttons
+          requestFavorite={requestFavorite}
+          counter={counter}
+          increment={increment}
+          decrement={decrement}
+          id={id}
+          style={style}
+          name={name}
+        />
       </div>
 
     </div>

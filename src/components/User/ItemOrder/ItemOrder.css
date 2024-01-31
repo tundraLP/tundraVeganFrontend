@@ -14,8 +14,9 @@
 @media screen and (min-width: 590px) {
     .item-order-card {
         flex-direction: row;
+        padding: 5px 20px;
         gap: 0px;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 }
 

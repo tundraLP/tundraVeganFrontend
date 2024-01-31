@@ -28,7 +28,7 @@ const Cart = () => {
                 <span className='span-total'>El total de la compra es ${total}</span>
                 <button onClick={emptyCart} className='button-empty-cart'>Limpiar carrito</button>
             </div>
-            
+
             <ToastContainer
                 position='bottom-right'
                 autoClose={4000}

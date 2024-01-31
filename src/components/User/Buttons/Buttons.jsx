@@ -1,13 +1,27 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add_to_cart } from '../../../redux/actions';
+import { toast } from 'react-toastify';
 import './Buttons.css';
 
-const Buttons = ({ id, increment, decrement, counter, style, requestFavorite }) => {
+const Buttons = ({ id, increment, decrement, counter, style, requestFavorite, name }) => {
 
     const dispatch = useDispatch();
 
-    const pushToCart = (count, id) => dispatch(add_to_cart({ count, id }));
+    const boolean = useSelector((state) => state.booleanToasty);
+
+    const activeToast = () => {
+        !boolean && toast.info(`Se han agregado ${counter} de ${name} al carrito`, {
+            className: 'toasty',
+            bodyClassName: 'toasty-body',
+        });
+    };
+
+    const pushToCart = (count, id) => {
+        dispatch(add_to_cart({ count, id }));
+
+        activeToast();
+    };
 
     return (
         <div className='box-buttons'>

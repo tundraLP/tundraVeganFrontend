@@ -16,7 +16,7 @@ const ItemList = ({ products }) => {
   const firstIndex = (currentPage - 1) * quantityPerPage;
   const lastIndex = Math.min(firstIndex + quantityPerPage, products.length);
 
-  const quantityOptions = [6, 12, 100];
+  const quantityOptions = [6, 12, products.length];
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -44,7 +44,7 @@ const ItemList = ({ products }) => {
         <div className="container-options">
 
           <span className='span-options'>Filtrar cantidad de productos mostrados</span>
-          
+
           <div className='container-options-quantity'>
             {
               quantityOptions.map((option) =>
