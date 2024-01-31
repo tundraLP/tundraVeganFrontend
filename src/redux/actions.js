@@ -18,7 +18,10 @@ export const actions = {
     ERROR: 'ERROR',
     CLEAN_ERROR: "CLEAN_ERROR",
     GET_TYPES: "GET_TYPES",
-    CHANGE_BOOLEAN_TOASTY: 'CHANGE_BOOLEAN_TOASTY'
+    CHANGE_BOOLEAN_TOASTY: 'CHANGE_BOOLEAN_TOASTY',
+    FILTER_BY_TYPE: "FILTER_BY_TYPE",
+    ORDER: "ORDER",
+    RESET_PRODUCTS: "RESET_PRODUCTS",
 };
 
 // actions para los user
@@ -218,6 +221,85 @@ export const change_boolean_toasty = () => {
         return dispatch({
             type: actions.CHANGE_BOOLEAN_TOASTY,
             payload: false
+        });
+    };
+};
+
+// action para filtros y ordenamientos
+
+export const filter_by_type = (productsToRender, type, products) => {
+    return (dispatch) => {    
+        let response = products;
+        if (type != 'all')  response = productsToRender.filter((product) => product.Type.name === type)
+        if (type != 'all' && response.length === 0)  response = products.filter((product) => product.Type.name === type)
+        return dispatch({
+            type: actions.FILTER_BY_TYPE,
+            payload: response,
+        });
+    };
+};
+
+export const order_by_name = (products) => {
+    return async (dispatch) => {
+        const response= products?.slice().sort((a, b) => {
+            if (a.name > b.name) return 1;
+            if (a.name < b.name) return -1;
+            return 0;
+            })
+        return dispatch({
+            type: actions.ORDER,
+            payload: response
+        });
+    };
+};
+
+export const order_by_name_backwards = (products) => {
+    return (dispatch) => {
+        const response= products?.slice().sort((a, b) => {
+            if (a.name < b.name) return 1;
+            if (a.name > b.name) return -1;
+            return 0;
+            })
+        return dispatch({
+            type: actions.ORDER,
+            payload: response
+        });
+    };
+};
+
+export const order_by_price = (products) => {
+    return (dispatch) => {
+        const response= products?.slice().sort((a, b) => {
+            if (a.price < b.price) return 1;
+            if (a.price > b.price) return -1;
+            return 0;
+            })
+        return dispatch({
+            type: actions.ORDER,
+            payload: response
+        });
+    };
+};
+
+export const order_by_price_backwards = (products) => {
+    return (dispatch) => {
+        const response= products?.slice().sort((a, b) => {
+            if (a.price > b.price) return 1;
+            if (a.price < b.price) return -1;
+            return 0;
+        })
+        return dispatch({
+            type: actions.ORDER,
+            payload: response
+        });
+    };
+};
+
+export const reset_products = (products) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.RESET_PRODUCTS,
+            payload: products,
         });
     };
 };
