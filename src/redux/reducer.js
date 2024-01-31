@@ -20,6 +20,7 @@ const initialState = {
     orders: [],
     favorites: [],
     products: [],
+    productsToRender: [],
     types: [],
     clients: [],
     detail: null,
@@ -28,6 +29,24 @@ const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        // actions para los ordenamientos y filtros
+        case actions.RESET_PRODUCTS:
+            return {
+                ...state,
+                productsToRender: action.payload,
+            };
+        case actions.ORDER:
+            return {
+                ...state,
+                productsToRender: action.payload,
+            };
+
+        case actions.FILTER_BY_TYPE:
+            return {
+                ...state,
+                productsToRender: action.payload,
+            };
 
         // actions para los user
         case actions.SIGN_IN:
@@ -164,7 +183,8 @@ export const rootReducer = (state = initialState, action) => {
         case actions.GET_PRODUCTS:
             return {
                 ...state,
-                products: action.payload
+                products: action.payload,
+                productsToRender: action.payload,
             };
 
         case actions.CLEAN_PRODUCTS:
