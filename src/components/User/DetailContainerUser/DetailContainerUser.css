@@ -1,7 +1,9 @@
 .detail-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     padding: 30px 15px;
     background: url('https://res.cloudinary.com/tundra/image/upload/v1705420519/Utils/Flores.webp');
     background-attachment: fixed;

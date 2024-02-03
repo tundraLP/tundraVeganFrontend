@@ -7,10 +7,12 @@ import { useFetchFavorite } from '../../../hooks/useFetchFavorite'
 import { uriBack } from '../../../utils/const';
 import { useFavorites } from '../../../hooks/useFavorites';
 import { useGetDetail } from '../../../hooks/useGetDetail';
+import { useFetchReviews } from '../../../hooks/useFetchReviews';
 import { ToastContainer } from 'react-toastify';
 import DetailUser from '../DetailUser/DetailUser';
 import axios from 'axios';
 import './DetailContainerUser.css';
+import ReviewsListContainer from '../ReviewsListContainer/ReviewsListContainer';
 
 const DetailContainerUser = () => {
 
@@ -62,6 +64,8 @@ const DetailContainerUser = () => {
 
   const style = useFavorites(id);
 
+  useFetchReviews(id);
+
   return (
     <section className='detail-container'>
 
@@ -75,6 +79,8 @@ const DetailContainerUser = () => {
         draggable={false}
         closeButton={false}
       />
+
+      <ReviewsListContainer />
 
     </section>
   );

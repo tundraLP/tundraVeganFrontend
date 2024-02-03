@@ -16,12 +16,14 @@ export const actions = {
     CLEAN_PRODUCTS: 'CLEAN_PRODCUTS',
     DELETE_FROM_CART: 'DELETE_FROM_CART',
     ERROR: 'ERROR',
-    CLEAN_ERROR: "CLEAN_ERROR",
-    GET_TYPES: "GET_TYPES",
+    CLEAN_ERROR: 'CLEAN_ERROR',
+    GET_TYPES: 'GET_TYPES',
     CHANGE_BOOLEAN_TOASTY: 'CHANGE_BOOLEAN_TOASTY',
-    FILTER_BY_TYPE: "FILTER_BY_TYPE",
-    ORDER: "ORDER",
-    RESET_PRODUCTS: "RESET_PRODUCTS",
+    FILTER_BY_TYPE: 'FILTER_BY_TYPE',
+    ORDER: 'ORDER',
+    RESET_PRODUCTS: 'RESET_PRODUCTS',
+    GET_REVIEW: 'GET_REVIEW',
+    CLEAN_REVIEW: 'CLEAN_REVIEW'
 };
 
 // actions para los user
@@ -228,10 +230,10 @@ export const change_boolean_toasty = () => {
 // action para filtros y ordenamientos
 
 export const filter_by_type = (productsToRender, type, products) => {
-    return (dispatch) => {    
+    return (dispatch) => {
         let response = products;
-        if (type != 'all')  response = productsToRender.filter((product) => product.Type.name === type)
-        if (type != 'all' && response.length === 0)  response = products.filter((product) => product.Type.name === type)
+        if (type != 'all') response = productsToRender.filter((product) => product.Type.name === type)
+        if (type != 'all' && response.length === 0) response = products.filter((product) => product.Type.name === type)
         return dispatch({
             type: actions.FILTER_BY_TYPE,
             payload: response,
@@ -241,11 +243,11 @@ export const filter_by_type = (productsToRender, type, products) => {
 
 export const order_by_name = (products) => {
     return async (dispatch) => {
-        const response= products?.slice().sort((a, b) => {
+        const response = products?.slice().sort((a, b) => {
             if (a.name > b.name) return 1;
             if (a.name < b.name) return -1;
             return 0;
-            })
+        })
         return dispatch({
             type: actions.ORDER,
             payload: response
@@ -255,11 +257,11 @@ export const order_by_name = (products) => {
 
 export const order_by_name_backwards = (products) => {
     return (dispatch) => {
-        const response= products?.slice().sort((a, b) => {
+        const response = products?.slice().sort((a, b) => {
             if (a.name < b.name) return 1;
             if (a.name > b.name) return -1;
             return 0;
-            })
+        })
         return dispatch({
             type: actions.ORDER,
             payload: response
@@ -269,11 +271,11 @@ export const order_by_name_backwards = (products) => {
 
 export const order_by_price = (products) => {
     return (dispatch) => {
-        const response= products?.slice().sort((a, b) => {
+        const response = products?.slice().sort((a, b) => {
             if (a.price < b.price) return 1;
             if (a.price > b.price) return -1;
             return 0;
-            })
+        })
         return dispatch({
             type: actions.ORDER,
             payload: response
@@ -283,7 +285,7 @@ export const order_by_price = (products) => {
 
 export const order_by_price_backwards = (products) => {
     return (dispatch) => {
-        const response= products?.slice().sort((a, b) => {
+        const response = products?.slice().sort((a, b) => {
             if (a.price > b.price) return 1;
             if (a.price < b.price) return -1;
             return 0;
@@ -300,6 +302,26 @@ export const reset_products = (products) => {
         return dispatch({
             type: actions.RESET_PRODUCTS,
             payload: products,
+        });
+    };
+};
+
+// actions para las review
+
+export const get_review = (review) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.GET_REVIEW,
+            payload: review
+        });
+    };
+};
+
+export const clean_review = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.CLEAN_REVIEW,
+            payload: []
         });
     };
 };
