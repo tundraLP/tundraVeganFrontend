@@ -23,6 +23,7 @@ const initialState = {
     productsToRender: [],
     types: [],
     clients: [],
+    reviews: [],
     detail: null,
     error: null,
     booleanToasty: false
@@ -220,6 +221,20 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 booleanToasty: action.payload
+            };
+
+        // action para las reviews
+
+        case actions.GET_REVIEW:
+            return {
+                ...state,
+                reviews: action.payload
+            };
+
+        case actions.CLEAN_REVIEW:
+            return {
+                ...state,
+                reviews: action.payload
             };
 
         default:
