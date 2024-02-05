@@ -33,7 +33,7 @@ const FavoriteList = () => {
     <ul className='layout'>
       {
         render.length ?
-          render.map((fav) => <Favorite key={fav.id} {...fav} deleteFavorite={deleteFavorite} />)
+          render.map((fav) => <Favorite key={fav.id} {...fav} deleteFavorite={deleteFavorite} user={user} />)
           : <h3>No tenes favoritos</h3>
       }
     </ul>
