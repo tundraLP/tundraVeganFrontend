@@ -25,7 +25,7 @@ const ItemList = ({ products }) => {
   const handleQuantityChange = (num) => {
     setQuantityPerPage(num);
     setCurrentPage(1);
-  }
+  };
 
   return (
     <>

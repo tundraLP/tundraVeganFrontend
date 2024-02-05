@@ -1,0 +1,13 @@
+.section-order-admin {
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705420519/Utils/Flores.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 0px;
+}
