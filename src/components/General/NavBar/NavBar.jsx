@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useRedirectHome } from '../../../hooks/useRedirectHome';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
@@ -14,7 +14,7 @@ const NavBar = () => {
     const user = useSelector((state) => state.user);
 
     const cart = useSelector((state) => state.cart);
-    
+
     useLocalStorage();
 
     useEffect(() => {
@@ -49,6 +49,13 @@ const NavBar = () => {
                 {user && user.type == 'User' && <NavBarUser />}
 
                 {user && user.type == 'Admin' && <NavBarAdmin />}
+
+                {
+                    user &&
+                    <li>
+                        <Link className='linkNav' to={'/Sobre-nosotros'}>Sobre nosotros</Link>
+                    </li>
+                }
 
                 {!user && <LinkNavBar />}
             </ul>

@@ -64,7 +64,12 @@ const RegisterForm = () => {
   const handleChangeImage = (e) => {
     const selectedImage = e.target.files[0];
 
-    setImage(selectedImage);
+    const imageToSend = new FormData();
+    imageToSend.append('image', selectedImage);
+    imageToSend.append('folder', 'User');
+    imageToSend.append('name', `image of ${input.name} ${input.lastName}`)
+
+    setImage(imageToSend);
   };
 
   const createUser = async (user) => {
@@ -79,12 +84,11 @@ const RegisterForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const imageToSend = new FormData();
-    imageToSend.append('image', image);
+    
 
-    console.log(imageToSend)
+    console.log(image)
 
-    const user = new Client(input.name, input.lastName, input.mail, input.adress, imageToSend, input.password, 'User', null);
+    // const user = new Client(input.name, input.lastName, input.mail, input.adress, imageToSend, input.password, 'User', null);
 
     // hice un cambio usando la class Client para crear y actualizar de manera mas controlado los user
     // const user = {
@@ -95,7 +99,7 @@ const RegisterForm = () => {
     //   adress: input.adress
     // };
 
-    if (validateBoolean) createUser(user);
+    // if (validateBoolean) createUser(user);
   };
 
   console.log(image)

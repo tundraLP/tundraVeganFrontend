@@ -1,0 +1,8 @@
+.ul-review-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: -webkit-fill-available;
+    gap: 10px;
+}

@@ -14,6 +14,7 @@
     .img-detail {
         width: 260px;
         height: 200px;
+        border-radius: 15px;
     }
 }
 

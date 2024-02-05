@@ -20,19 +20,22 @@ const App = () => {
         <BrowserRouter>
             <NavBar />
             <Routes>
+                {/* rutas generales */}
                 <Route path="/" element={<Landing />} />
                 <Route path="/Registrarse" element={<RegisterForm />} />
                 <Route path="/Iniciar-sesion" element={<LoginForm />} />
                 <Route path="/Inicio" element={<ItemListContainer />} />
-                <Route path="/Detalle/:id" element={<DetailContainerUser />} />
-                <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
                 <Route path="/Mi-perfil" element={<Profile />} />
+                <Route path="/Ordenes" element={<OrderListContainer />} />
+                <Route path="/Sobre-nosotros" element={<AboutUs />} />
+                {/* rutas usuarios */}
+                <Route path="/Detalle/:id" element={<DetailContainerUser />} />
                 <Route path="/Carrito" element={<Cart />} />
                 <Route path="/Favoritos" element={<FavoriteListContainer />} />
-                <Route path="/Ordenes" element={<OrderListContainer />} />
                 <Route path="/Actualizar-usuario" element={<FormUpdateUser />} />
                 <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
-                <Route path="/Sobre-nosotros" element={<AboutUs/>} />
+                {/* rutas admin */}
+                <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
             </Routes>
             <Footer />
         </BrowserRouter>
