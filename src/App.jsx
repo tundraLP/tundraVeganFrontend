@@ -14,6 +14,8 @@ import OrderListContainer from './components/General/OrderListContainer/OrderLis
 import FormUpdateUser from './components/General/FormUpdateUser/FormUpdateUser';
 import DetailOrderContainer from "./components/User/DetailOrderContainer/DetailOrderContainer";
 import AboutUs from "./components/General/AboutUs/AboutUs";
+import ManageUsersContainer from "./components/Admin/ManageUsersContainer/ManageUsersContainer";
+import OrderListContainerAdmin from "./components/Admin/OrderListContainerAdmin/OrderListContainerAdmin";
 
 const App = () => {
     return (
@@ -26,9 +28,9 @@ const App = () => {
                 <Route path="/Iniciar-sesion" element={<LoginForm />} />
                 <Route path="/Inicio" element={<ItemListContainer />} />
                 <Route path="/Mi-perfil" element={<Profile />} />
-                <Route path="/Ordenes" element={<OrderListContainer />} />
                 <Route path="/Sobre-nosotros" element={<AboutUs />} />
                 {/* rutas usuarios */}
+                <Route path="/Ordenes" element={<OrderListContainer />} />
                 <Route path="/Detalle/:id" element={<DetailContainerUser />} />
                 <Route path="/Carrito" element={<Cart />} />
                 <Route path="/Favoritos" element={<FavoriteListContainer />} />
@@ -36,6 +38,8 @@ const App = () => {
                 <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
                 {/* rutas admin */}
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
+                <Route path="/Administrar-usuarios" element={<ManageUsersContainer />} />
+                <Route path="/Ordenes-admin" element={<OrderListContainerAdmin />} />
             </Routes>
             <Footer />
         </BrowserRouter>
