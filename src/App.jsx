@@ -13,6 +13,7 @@ import FavoriteListContainer from "./components/User/FavoriteListContainer/Favor
 import OrderListContainer from './components/General/OrderListContainer/OrderListContainer';
 import FormUpdateUser from './components/General/FormUpdateUser/FormUpdateUser';
 import DetailOrderContainer from "./components/User/DetailOrderContainer/DetailOrderContainer";
+import AboutUs from "./components/General/AboutUs/AboutUs";
 
 const App = () => {
     return (
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path="/Ordenes" element={<OrderListContainer />} />
                 <Route path="/Actualizar-usuario" element={<FormUpdateUser />} />
                 <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
+                <Route path="/Sobre-nosotros" element={<AboutUs/>} />
             </Routes>
             <Footer />
         </BrowserRouter>
