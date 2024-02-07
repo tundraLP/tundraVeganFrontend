@@ -1,18 +1,19 @@
 import { actions } from "./actions";
 
 const user = {
-    id: "111e1c03-9530-4b0e-80d4-7ac19ba13d99",
+    id: "3ac49877-78fd-4f2d-9c14-2ba64ddda919",
     image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
     type: "Admin",
     name: "blas",
     lastName: "casale",
-    mail: "casale.blas@live.com",
+    mail: "cosito@live.com",
     adress: "Camino arana",
     password: "Eminem97.",
-    updatedAt: "2024-01-10T16:47:45.866Z",
-    createdAt: "2024-01-10T16:47:45.866Z",
+    updatedAt: "2024-02-07T18:10:09.090Z",
+    createdAt: "2024-02-07T18:10:09.090Z",
     deletedAt: null
 }
+
 
 const initialState = {
     user: user,

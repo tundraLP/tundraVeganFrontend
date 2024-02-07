@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_detail } from "../redux/actions";
+import { clean_detail, get_detail } from "../redux/actions";
 
 export const useGetOrder = (OrderId) => {
 
@@ -12,5 +12,7 @@ export const useGetOrder = (OrderId) => {
         const order = orders.find((ord) => ord.id === OrderId);
 
         dispatch(get_detail(order));
+
+        return () => clean_detail();
     }, []);
 };

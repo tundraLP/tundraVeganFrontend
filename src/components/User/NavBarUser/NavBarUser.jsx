@@ -18,6 +18,9 @@ const NavBarUser = () => {
         <Link className='linkNav' to={'/Ordenes'}>Ordenes</Link>
       </li>
       <li>
+        <Link className='linkNav' to={'/Sobre-nosotros'}>Sobre nosotros</Link>
+      </li>
+      <li>
         <CartNav />
       </li>
     </>

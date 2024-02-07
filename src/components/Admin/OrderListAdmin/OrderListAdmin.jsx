@@ -11,13 +11,13 @@ const OrderListAdmin = () => {
   const orders = useSelector((state) => state.orders);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [quantityPerPage, setQuantityPerPage] = useState(2);
+  const [quantityPerPage, setQuantityPerPage] = useState(10);
   const totalPages = Math.ceil(orders.length / quantityPerPage);
 
   const firstIndex = (currentPage - 1) * quantityPerPage;
   const lastIndex = Math.min(firstIndex + quantityPerPage, orders.length);
 
-  const quantityOptions = [6, 12, orders.length];
+  const quantityOptions = [10, 20, orders.length];
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -26,11 +26,12 @@ const OrderListAdmin = () => {
   const handleQuantityChange = (num) => {
     setQuantityPerPage(num);
     setCurrentPage(1);
-  }
+  };
+
   return (
     <div className='box-order-list'>
 
-      <ul className='layout'>
+      <ul className='orders'>
         {
           orders.length > 0 &&
           orders.slice(firstIndex, lastIndex).map((order) => <OrderItemAdmin key={order.id} {...order} />)

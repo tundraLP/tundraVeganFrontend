@@ -49,14 +49,7 @@ const NavBar = () => {
                 {user && user.type == 'User' && <NavBarUser />}
 
                 {user && user.type == 'Admin' && <NavBarAdmin />}
-
-                {
-                    user &&
-                    <li>
-                        <Link className='linkNav' to={'/Sobre-nosotros'}>Sobre nosotros</Link>
-                    </li>
-                }
-
+                
                 {!user && <LinkNavBar />}
             </ul>
 
