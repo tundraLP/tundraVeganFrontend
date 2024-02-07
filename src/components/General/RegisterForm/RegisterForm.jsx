@@ -63,13 +63,14 @@ const RegisterForm = () => {
 
   const handleChangeImage = (e) => {
     const selectedImage = e.target.files[0];
-
-    const imageToSend = new FormData();
-    imageToSend.append('image', selectedImage);
-    imageToSend.append('folder', 'User');
-    imageToSend.append('name', `image of ${input.name} ${input.lastName}`)
-
-    setImage(imageToSend);
+    if (selectedImage) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64Image = e.target.result;
+        setImage(base64Image);
+      };
+      reader.readAsDataURL(selectedImage);
+    }
   };
 
   const createUser = async (user) => {
@@ -81,28 +82,26 @@ const RegisterForm = () => {
     };
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    
-
-    console.log(image)
-
-    // const user = new Client(input.name, input.lastName, input.mail, input.adress, imageToSend, input.password, 'User', null);
-
-    // hice un cambio usando la class Client para crear y actualizar de manera mas controlado los user
-    // const user = {
-    //   name: input.name,
-    //   lastName: input.lastName,
-    //   mail: input.mail,
-    //   password: input.password,
-    //   adress: input.adress
-    // };
-
-    // if (validateBoolean) createUser(user);
+    try {
+      if (image){        
+        // Seteo el body para subir la imagen
+        const imageForm = { image, folder: 'Users'};
+        const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=> {
+          return  res.data.secure_url
+        });
+        const user = new Client(input.name, input.lastName, input.mail, input.adress, uploadedImage, input.password, 'User', null);
+        const response = await createUser(user);
+      }else{
+        const user = new Client(input.name, input.lastName, input.mail, input.adress, null, input.password, 'User', null);
+        const response = await createUser(user);
+      }
+    } catch (error) {
+      dispatch(put_error(error.message));
+    }
   };
-
-  console.log(image)
+  
 
   return (
 
