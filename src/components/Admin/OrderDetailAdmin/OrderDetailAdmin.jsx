@@ -1,13 +1,11 @@
 import React from 'react';
-import ItemOrder from '../ItemOrder/ItemOrder';
-import { useGetDateOrder } from '../../../hooks/useGetDateOrder';
-import './DetailOrder.css';
+import ItemOrder from '../../User/ItemOrder/ItemOrder';
 
-const DetailOrder = ({ adress, createdAt, id, state, total, products }) => {
+const OrderDetailAdmin = ({ id, state, adress, products, total, UserId }) => {
 
-    const style = state === 'Creado' ? 'red' : 'green';
+    const date = '15 de febrero';
 
-    const date = useGetDateOrder(createdAt);
+    const style = state == 'Creado' ? 'red' : 'green';
 
     return (
         <article className='card-detail-order'>
@@ -36,8 +34,9 @@ const DetailOrder = ({ adress, createdAt, id, state, total, products }) => {
                 <p className='p'>Dirección del envio: {adress}</p>
                 <p className='p'>Total del pedido: <span className='price'>${total.slice(0, -3)}</span></p>
             </div>
+
         </article>
     );
 };
 
-export default DetailOrder;
+export default OrderDetailAdmin;

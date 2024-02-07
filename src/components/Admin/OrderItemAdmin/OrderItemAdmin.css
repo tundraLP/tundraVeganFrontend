@@ -1,0 +1,20 @@
+@media screen and (min-width: 300px) {
+    .box-id-order-admin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 5px;
+        width: -webkit-fill-available;
+        border-bottom: 2px solid #CFA9A3;
+    }
+}
+
+@media screen and (min-width:700px) {
+    .box-id-order-admin {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0px;
+    }
+}

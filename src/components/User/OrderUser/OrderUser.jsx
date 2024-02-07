@@ -1,41 +1,11 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './OrderUser.css';
-import { months } from '../../../utils/const'
+import { Link } from 'react-router-dom';
+import { useGetDateOrder } from '../../../hooks/useGetDateOrder';
 
-const OrderUser = ({ state, total, id, createdAt }) => {
+const OrderUser = ({ state, id, createdAt }) => {
 
-    const [date, setDate] = useState("");
-
-    useEffect(() => {
-        let completeDate = "";
-
-        for (let i = 8; i <= 9; i++) {
-            const letter = createdAt[i];
-            completeDate += letter;
-        };
-
-        completeDate += " de ";
-
-        let month = "";
-        for (let i = 5; i <= 6; i++) {
-            const letter = createdAt[i];
-            month += letter;
-        };
-
-        const number = parseInt(month);
-
-        month = months[number - 1];
-
-        completeDate += `${month} del `;
-
-        for (let i = 0; i <= 3; i++) {
-            const letter = createdAt[i];
-            completeDate += letter;
-        };
-        setDate(completeDate);
-    }, []);
+    const date = useGetDateOrder(createdAt);
 
     const style = state == "Creado" ? "red" : "green";
 

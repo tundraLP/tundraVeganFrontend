@@ -16,6 +16,7 @@ import DetailOrderContainer from "./components/User/DetailOrderContainer/DetailO
 import AboutUs from "./components/General/AboutUs/AboutUs";
 import ManageUsersContainer from "./components/Admin/ManageUsersContainer/ManageUsersContainer";
 import OrderListContainerAdmin from "./components/Admin/OrderListContainerAdmin/OrderListContainerAdmin";
+import OrderDetailContainer from "./components/Admin/OrderDetailContainer/OrderDetailContainer";
 
 const App = () => {
     return (
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
                 <Route path="/Administrar-usuarios" element={<ManageUsersContainer />} />
                 <Route path="/Ordenes-admin" element={<OrderListContainerAdmin />} />
+                <Route path="/Detalle-pedido-admin/:id" element={<OrderDetailContainer />} />
             </Routes>
             <Footer />
         </BrowserRouter>
