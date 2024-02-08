@@ -17,6 +17,7 @@ import AboutUs from "./components/General/AboutUs/AboutUs";
 import ManageUsersContainer from "./components/Admin/ManageUsersContainer/ManageUsersContainer";
 import OrderListContainerAdmin from "./components/Admin/OrderListContainerAdmin/OrderListContainerAdmin";
 import OrderDetailContainer from "./components/Admin/OrderDetailContainer/OrderDetailContainer";
+import CreateProductAdmin from "./components/Admin/CreateProductAdmin/CreateProductAdmin";
 
 const App = () => {
     return (
@@ -42,6 +43,7 @@ const App = () => {
                 <Route path="/Administrar-usuarios" element={<ManageUsersContainer />} />
                 <Route path="/Ordenes-admin" element={<OrderListContainerAdmin />} />
                 <Route path="/Detalle-pedido-admin/:id" element={<OrderDetailContainer />} />
+                <Route path="/Crear-producto" element={<CreateProductAdmin />} />
             </Routes>
             <Footer />
         </BrowserRouter>
