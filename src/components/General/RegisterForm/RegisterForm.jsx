@@ -88,9 +88,7 @@ const RegisterForm = () => {
       if (image){        
         // Seteo el body para subir la imagen
         const imageForm = { image, folder: 'Users'};
-        const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=> {
-          return  res.data.secure_url
-        });
+        const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=>  res.data.secure_url);
         const user = new Client(input.name, input.lastName, input.mail, input.adress, uploadedImage, input.password, 'User', null);
         const response = await createUser(user);
       }else{

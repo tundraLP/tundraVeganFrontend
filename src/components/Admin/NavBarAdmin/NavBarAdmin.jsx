@@ -10,6 +10,9 @@ const NavBarAdmin = () => {
       <li>
         <Link to={'/Ordenes-admin'} className='linkNav'>Ordenes</Link>
       </li>
+      <li>
+        <Link to={'/Crear-producto'} className='linkNav'>Crear producto</Link>
+      </li>
     </>
   );
 };
