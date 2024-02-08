@@ -91,7 +91,7 @@ const CreateProductAdmin = () => {
             const imageUrl = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res) => {
                 return res.data.secure_url});
             const product= new Product(input.name, input.type, input.description, input.price, input.stock, imageUrl, null);
-            await axios.post(`${uriBack}/product/createProduct`, product).then((res) => navigate('/'));
+            await axios.post(`${uriBack}/product/createProduct`, product).then((res) => navigate('/Inicio'));
         } catch (error) {
             dispatch(put_error(error));
         }
