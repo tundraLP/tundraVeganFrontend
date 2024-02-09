@@ -26,6 +26,8 @@ const FormUpdateUser = () => {
 
     const user = useSelector((state) => state.user);
 
+    const [ newImage, setNewImage ] = useState(null);
+
     // estados de los inputs
 
     const [input, setInput] = useState({ name: user.name, lastName: user.lastName, mail: user.mail, adress: user.adress, image: user.image, password: user.password, confirmPassword: "" });
@@ -64,21 +66,42 @@ const FormUpdateUser = () => {
 
     const createUser = async () => {
         try {
-            const newUser = new Client(input.name, input.lastName, input.mail, input.adress, input.image, input.password, user.type, user.id);
-            await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res));
+            if (newImage){
+                const imageForm = { image: newImage, folder: 'Users', name: user.id};
+                const cloudImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res) => res.data.secure_url);
+                const newUser = new Client(input.name, input.lastName, input.mail, input.adress, cloudImage, input.password, user.type, user.id);
+                await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
+            }else{
+                const newUser = new Client(input.name, input.lastName, input.mail, input.adress, input.image, input.password, user.type, user.id);
+                await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
+            }
             setBoolean(true);
             setInput({ name: "", lastName: "", mail: "", adress: "", image: "", password: "", confirmPassword: "" });
         } catch (error) {
             dispatch(put_error(error.response.data.error));
         };
     };
+    const handleChangeImage = (e) => {
+        const selectedImage = e.target.files[0];
+        if (selectedImage) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const base64Image = e.target.result;
+            setNewImage(base64Image);
+          };
+          reader.readAsDataURL(selectedImage);
+        }else setNewImage(null);
+      };
 
     const closeModal = () => setBoolean(!boolean);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (validateBoolean) createUser();
+        try {
+            if (validateBoolean) await createUser();
+        } catch (error) {
+            dispatch(put_error(error));
+        }
     };
 
     return (
@@ -164,6 +187,13 @@ const FormUpdateUser = () => {
                         value={input.confirmPassword}
                         key={"confirmPassword"}
                     />
+
+                    <li className='box-input'>
+                        <label htmlFor="image" className='label-form'>Selecciona una imagen</label>
+                        <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
+                            accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
+                        />
+                    </li>
                 </ul>
 
                 <span className='span-form'>{errorInput.passNoMatch}</span>
