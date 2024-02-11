@@ -1,0 +1,52 @@
+.card-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border: 2px solid #D7903A;
+    width: 80%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgba(209, 204, 204, 0.864);
+}
+
+@media screen and (min-width: 300px) {
+    .box-info-user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 5px;
+        border-top: 1px solid #D7903A;
+        width: -webkit-fill-available;
+        border-bottom: 2px solid #CFA9A3;
+    }
+
+    .box-update-type-admin {
+        padding: 5px;
+        gap: 10px;
+        width: -webkit-fill-available;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .box-info-user {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 0px;
+        padding: 5px 0px;
+    }
+
+    .box-update-type-admin {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 5px 0px;
+        gap: 0px;
+    }
+}
