@@ -90,10 +90,10 @@ const RegisterForm = () => {
         const imageForm = { image, folder: 'Users'};
         const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=>  res.data.secure_url);
         const user = new Client(input.name, input.lastName, input.mail, input.adress, uploadedImage, input.password, 'User', null);
-        const response = await createUser(user);
+        await createUser(user);
       }else{
         const user = new Client(input.name, input.lastName, input.mail, input.adress, null, input.password, 'User', null);
-        const response = await createUser(user);
+        await createUser(user);
       }
     } catch (error) {
       dispatch(put_error(error.message));
