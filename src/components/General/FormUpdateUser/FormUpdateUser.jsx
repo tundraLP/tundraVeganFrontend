@@ -86,7 +86,7 @@ const FormUpdateUser = () => {
                 await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
             }
             setBoolean(true);
-            getUser(input.mail, input.password);
+            await getUser(input.mail, input.password);
             setInput({ name: "", lastName: "", mail: "", adress: "", image: "", password: "", confirmPassword: "" });
             navigate('/Inicio');
         } catch (error) {
