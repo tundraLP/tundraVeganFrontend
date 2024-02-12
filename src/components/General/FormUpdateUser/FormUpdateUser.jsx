@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clean_error, put_error } from '../../../redux/actions';
+import { clean_error, put_error, sign_in } from '../../../redux/actions';
 import { validateInput } from '../../../utils/validateInput';
 import { styleError } from '../../../utils/styleError';
 import { Client } from '../../../utils/classClient';
@@ -11,12 +11,14 @@ import Input from '../Input/Input';
 import ButtonShown from '../ButtonShown/ButtonShown';
 import axios from 'axios';
 import Modal from '../Modal/Modal';
+import { useNavigate } from 'react-router-dom';
 
 const FormUpdateUser = () => {
 
     // estados de redux y limpieza de estados
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         return () => dispatch(clean_error());
@@ -65,6 +67,14 @@ const FormUpdateUser = () => {
     };
 
     const createUser = async () => {
+        const getUser = async (mail, password) => {
+            try {
+              const user = await axios.get(`${uriBack}/user/getUser?mail=${mail}&password=${password}`).then((res) => res.data);
+              dispatch(sign_in(user));
+            } catch (error) {
+              dispatch(put_error(error.response.data.error));
+            };
+        };
         try {
             if (newImage){
                 const imageForm = { image: newImage, folder: 'Users', name: user.id};
@@ -76,7 +86,9 @@ const FormUpdateUser = () => {
                 await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
             }
             setBoolean(true);
+            getUser(input.mail, input.password);
             setInput({ name: "", lastName: "", mail: "", adress: "", image: "", password: "", confirmPassword: "" });
+            navigate('/Inicio');
         } catch (error) {
             dispatch(put_error(error.response.data.error));
         };
