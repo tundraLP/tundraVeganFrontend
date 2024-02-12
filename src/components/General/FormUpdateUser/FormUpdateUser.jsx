@@ -77,7 +77,7 @@ const FormUpdateUser = () => {
         };
         try {
             if (newImage){
-                const imageForm = { image: newImage, folder: 'Users', name: user.id};
+                const imageForm = { image: newImage, folder: 'Users', name: user.mail};
                 const cloudImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res) => res.data.secure_url);
                 const newUser = new Client(input.name, input.lastName, input.mail, input.adress, cloudImage, input.password, user.type, user.id);
                 await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
