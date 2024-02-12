@@ -82,19 +82,27 @@ const RegisterForm = () => {
     };
   };
 
+  const isUser = async (mail) => {
+    const response = await axios.get(`${uriBack}/user/isUser?mail=${input.mail}`).then((res) => res.data);
+    return response;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (image){        
-        // Seteo el body para subir la imagen
-        const imageForm = { image, folder: 'Users'};
-        const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=>  res.data.secure_url);
-        const user = new Client(input.name, input.lastName, input.mail, input.adress, uploadedImage, input.password, 'User', null);
-        await createUser(user);
-      }else{
-        const user = new Client(input.name, input.lastName, input.mail, input.adress, null, input.password, 'User', null);
-        await createUser(user);
-      }
+      const aux = await isUser(input.mail);
+      if (!aux){
+        if (image){  
+          // Seteo el body para subir la imagen
+          const imageForm = { image, folder: 'Users', name: input.mail};
+          const uploadedImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res)=>  res.data.secure_url);
+          const user = new Client(input.name, input.lastName, input.mail, input.adress, uploadedImage, input.password, 'User', null);
+          await createUser(user);
+        }else{
+          const user = new Client(input.name, input.lastName, input.mail, input.adress, null, input.password, 'User', null);
+          await createUser(user);
+        }
+      }else dispatch(put_error(`Ya existe un usuario con ese mail. Intente otro o inicie sesion.`));
     } catch (error) {
       dispatch(put_error(error.message));
     }
