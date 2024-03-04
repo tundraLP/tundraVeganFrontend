@@ -14,7 +14,6 @@ const ManageUsersContainer = () => {
 
     const cleanInput = () => setInput("");
 
-
     return (
         <section className='section-manage-user'>
 

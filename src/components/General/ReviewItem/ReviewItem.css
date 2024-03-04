@@ -24,6 +24,8 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid #D7903A;
 }
 
 .box-stars-item {
@@ -36,3 +38,17 @@
 .starFilled {
     color: #ffec00;
 }
+
+.border-and-padding {
+    border-bottom: 1px solid #D7903A;
+    padding: 10px 0px;
+}
+
+.box-delete-review {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
