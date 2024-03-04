@@ -10,7 +10,7 @@ const ItemList = ({ products }) => {
   const user = useSelector((state) => state.user);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [quantityPerPage, setQuantityPerPage] = useState(2);
+  const [quantityPerPage, setQuantityPerPage] = useState(6);
   const totalPages = Math.ceil(products.length / quantityPerPage);
 
   const firstIndex = (currentPage - 1) * quantityPerPage;

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import './ManageUser.css';
 import Modal from '../../General/Modal/Modal';
 import axios from 'axios';
 import { uriBack } from '../../../utils/const';
+import './ManageUser.css';
+import { useDispatch } from 'react-redux';
+import { get_clients } from '../../../redux/actions'
 
 const ManageUser = ({ name, mail, lastName, id, type }) => {
+
+    const dispatch = useDispatch();
 
     const input = { user: 'User', admin: 'Admin' };
 
@@ -23,17 +27,21 @@ const ManageUser = ({ name, mail, lastName, id, type }) => {
 
     const closeModal = () => setBoolean(!boolean);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         const info = { UserId: id, type: stateToSend };
         try {
-            const response = axios.put(`${uriBack}/user/updateUserAdmin`, info).then((res) => res.data);
+            const response = await axios.put(`${uriBack}/user/updateUser`, info).then((res) => res.data);
             setMessage(response.message);
             setBoolean(!boolean);
+            const reloadUsers = await axios.get(`${uriBack}/user/getUsersAdmin`).then((res) => res.data);
+            dispatch(get_clients(reloadUsers));
         } catch (error) {
             setMessage(error.response.data);
             setBoolean(!boolean);
         };
     };
+
+    console.log(stateToSend)
 
     return (
         <article className='card-user'>

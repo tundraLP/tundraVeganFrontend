@@ -12,13 +12,17 @@ import { ToastContainer } from 'react-toastify';
 import DetailUser from '../DetailUser/DetailUser';
 import axios from 'axios';
 import './DetailContainerUser.css';
-import ReviewsListContainer from '../ReviewsListContainer/ReviewsListContainer';
+import ReviewsListContainer from '../../General/ReviewsListContainer/ReviewsListContainer';
+import { useFindReviewBoolean } from '../../../hooks/useFindReviewBoolean';
+import CreateReviewForm from '../CreateReviewForm/CreateReviewForm';
 
 const DetailContainerUser = () => {
 
   const [boolean, setBoolean] = useState(false);
 
   const { id } = useParams();
+
+  const booleanReview = useFindReviewBoolean(id)
 
   const dispatch = useDispatch();
 
@@ -80,7 +84,9 @@ const DetailContainerUser = () => {
         closeButton={false}
       />
 
-      <ReviewsListContainer />
+      {booleanReview ? <h3>Ya tenes reseña de este producto</h3> : <CreateReviewForm {...detail} />}
+
+      {detail && <ReviewsListContainer />}
 
     </section>
   );

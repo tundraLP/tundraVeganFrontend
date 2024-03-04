@@ -17,7 +17,7 @@ const ReviewsListContainer = () => {
                 </button>
             </div>
 
-            <ReviewList />
+            {boolean && <ReviewList />}
         </section>
     );
 };
