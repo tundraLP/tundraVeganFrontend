@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clean_cart, clean_error, put_error } from '../../../redux/actions';
 import { useFindProductsCart } from '../../../hooks/useFindProductsCart';
 import { ToastContainer } from 'react-toastify';
+import { usePreparePayment } from '../../../hooks/usePreparePayment';
 import CartListItem from '../CartListItem/CartListItem';
 import Modal from '../../General/Modal/Modal';
 import ModalAdress from '../ModalAdress/ModalAdress';
