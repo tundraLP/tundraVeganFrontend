@@ -48,6 +48,20 @@
     transition: 0.7s;
 }
 
+.button-complete-buy {
+    border: 2px solid #6C7231;
+    background-color: #D7903A;
+    color: #fafafa;
+    padding: 4px;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+
+.button-complete-buy:hover {
+    border: solid 2px #6b7231cf;
+    background-color: #d7903ae0;
+}
+
 .button-empty-cart:hover {
     border: #6b2140db solid 2px;
     background-color: #c9461ed3;
