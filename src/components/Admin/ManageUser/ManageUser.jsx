@@ -58,8 +58,13 @@ const ManageUser = ({ name, mail, lastName, id, type }) => {
                     <label className='label-form' htmlFor="type">Actualiza el usuario:</label>
 
                     <select name="type" id="type" className='select-item' onChange={handleChange}>
-                        <option key={'User'} value={input.user}>Cliente</option>
-                        <option key={'Admin'} value={input.admin}>Administrador</option>
+                        {type == 'User' ? <>
+                            <option key={'User'} value={input.user}>Cliente</option>
+                            <option key={'Admin'} value={input.admin}>Administrador</option>
+                        </> : <>
+                            <option key={'Admin'} value={input.admin}>Administrador</option>
+                            <option key={'User'} value={input.user}>Cliente</option>
+                        </>}
                     </select>
 
                 </div>
