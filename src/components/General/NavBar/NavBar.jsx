@@ -53,7 +53,9 @@ const NavBar = () => {
                 {!user && <LinkNavBar />}
             </ul>
 
-            {user && <Avatar {...user} />}
+            {user && <Link to='/Mi-perfil'>
+                <Avatar {...user} />
+            </Link>}
 
         </nav >
     )
