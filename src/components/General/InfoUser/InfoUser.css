@@ -20,3 +20,6 @@
     align-items: center;
     gap: 15px;
 }
+.modifyData{
+    display: flex;
+}

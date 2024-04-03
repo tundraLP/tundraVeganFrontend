@@ -11,7 +11,7 @@ import Input from '../Input/Input';
 import ButtonShown from '../ButtonShown/ButtonShown';
 import axios from 'axios';
 import Modal from '../Modal/Modal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const FormUpdateUser = () => {
 
@@ -119,6 +119,9 @@ const FormUpdateUser = () => {
     return (
         <section className='section-update'>
             <form className='form form-update' onSubmit={handleSubmit}>
+            <Link to='/Mi-Perfil'>
+            <button className='button-form'>Volver</button>
+            </Link>
                 <legend className='legend'>Actualiza tus datos:</legend>
 
                 <ul className='ul-form'>
