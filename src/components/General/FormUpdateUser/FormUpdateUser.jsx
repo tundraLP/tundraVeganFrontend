@@ -99,10 +99,16 @@ const FormUpdateUser = () => {
           const reader = new FileReader();
           reader.onload = (e) => {
             const base64Image = e.target.result;
+            const img = document.getElementById('img-preview');
             setNewImage(base64Image);
+            img.src = base64Image;
           };
           reader.readAsDataURL(selectedImage);
-        }else setNewImage(null);
+        }else{
+            setNewImage(null);
+            const img = document.getElementById('img-preview');
+            img.src = user.image;
+        } 
       };
 
     const closeModal = () => setBoolean(!boolean);
@@ -120,11 +126,19 @@ const FormUpdateUser = () => {
         <section className='section-update'>
             <form className='form form-update' onSubmit={handleSubmit}>
             <Link to='/Mi-Perfil'>
-            <button className='button-form'>Volver</button>
+                <button className='button-form'>Volver</button>
             </Link>
                 <legend className='legend'>Actualiza tus datos:</legend>
-
+                
                 <ul className='ul-form'>
+                    <li className='image-input'>
+                            <img className='image-preview' src={user.image} alt='Profile image' id='img-preview' />
+                            <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
+                                accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
+                            />
+                                <label for="image" className='button-form' >Cambiar foto</label>
+                    </li>
+
                     <Input
                         button={false}
                         errorInput={errorInput.name}
@@ -203,12 +217,6 @@ const FormUpdateUser = () => {
                         key={"confirmPassword"}
                     />
 
-                    <li className='box-input'>
-                        <label htmlFor="image" className='label-form'>Selecciona una imagen</label>
-                        <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
-                            accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
-                        />
-                    </li>
                 </ul>
 
                 <span className='span-form'>{errorInput.passNoMatch}</span>
