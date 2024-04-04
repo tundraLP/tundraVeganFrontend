@@ -8,6 +8,7 @@
     justify-content: start;
     align-items: center;
     padding: 15px;
+    padding-left: 100px;
 }
 
 .button-form {
@@ -17,10 +18,27 @@
     cursor: pointer;
     border: none;
     border-radius: 10px;
-    transition: 1s;
+    transition: 0.5s ease-out;
+    font-size: 15px;
 }
 
 .button-form:hover {
     background-color: #daaa70;
     color: black;
+}
+
+.image-preview{
+    max-width: 270px;
+    max-height: fit-content;
+}
+
+.input-file{
+    display: none;
+}
+
+.image-input{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
