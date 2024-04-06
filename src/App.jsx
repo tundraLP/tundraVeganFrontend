@@ -18,6 +18,7 @@ import ManageUsersContainer from "./components/Admin/ManageUsersContainer/Manage
 import OrderListContainerAdmin from "./components/Admin/OrderListContainerAdmin/OrderListContainerAdmin";
 import OrderDetailContainer from "./components/Admin/OrderDetailContainer/OrderDetailContainer";
 import CreateProductAdmin from "./components/Admin/CreateProductAdmin/CreateProductAdmin";
+import FormUpdateProduct from './components/Admin/FormUpdateProduct/FormUpdateProduct';
 
 const App = () => {
     return (
@@ -40,6 +41,7 @@ const App = () => {
                 <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
                 {/* rutas admin */}
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
+                <Route path="/Actualizar-producto/:id" element={< FormUpdateProduct/>} />
                 <Route path="/Administrar-usuarios" element={<ManageUsersContainer />} />
                 <Route path="/Ordenes-admin" element={<OrderListContainerAdmin />} />
                 <Route path="/Detalle-pedido-admin/:id" element={<OrderDetailContainer />} />
