@@ -15,6 +15,8 @@ const CreateProductAdmin = () => {
     const types = useSelector((state) => state.types);
     const navigate = useNavigate();
 
+    const defaultImage = 'https://res.cloudinary.com/tundra/image/upload/v1704899440/samples/food/spices.jpg';
+
     const inputBase = {
         name: '',
         description: '',
@@ -74,17 +76,22 @@ const CreateProductAdmin = () => {
     }
 
     const handleChangeImage = (e) => {
-        e.preventDefault();
         const selectedImage = e.target.files[0];
         if (selectedImage) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const base64Image = e.target.result;
-                setInput({ ...input, image: base64Image });
-            };
-            reader.readAsDataURL(selectedImage);
-        }
-    };
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const base64Image = e.target.result;
+            const img = document.getElementById('img-preview');
+            setInput({ ...input, image: base64Image });
+            img.src = base64Image;
+          };
+          reader.readAsDataURL(selectedImage);
+        }else{
+            setInput({ ...input, image: null });
+            const img = document.getElementById('img-preview');
+            img.src = defaultImage;
+        } 
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,8 +105,6 @@ const CreateProductAdmin = () => {
         } catch (error) {
             dispatch(put_error(error));
         }
-
-
     }
 
     const handleTypeChange = (e) => {
@@ -120,6 +125,14 @@ const CreateProductAdmin = () => {
         <section className='section-create-product'>
             <h2>Crear Producto Admin</h2>
             <form className='form' onSubmit={handleSubmit}>
+                <div className='image-input'>
+                            <h4>Imagen del producto</h4>
+                            <img className='image-preview' src={defaultImage} alt='Profile image' id='img-preview' />
+                            <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
+                                accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
+                            />
+                                <label for="image" className='button-form' >Cambiar foto</label>
+                </div>
 
                 <Input
                     button={false}
@@ -181,13 +194,6 @@ const CreateProductAdmin = () => {
                     <span className='span--form'>{error.type}</span>
                 </div>
 
-                <div>
-                    <label htmlFor="image" className='label-form'>Imagen del producto: </label>
-                    <input className='input-file' type="file" name='image' onChange={handleChangeImage}
-                        accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
-                    />
-                    <span className='span--form'>{error.image}</span>
-                </div>
                 {
                     error.name || error.description || error.image || error.type || error.price || error.stock ?
                         <h3>Errors founded.</h3> :
