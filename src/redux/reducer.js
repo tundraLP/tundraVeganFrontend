@@ -3,7 +3,7 @@ import { actions } from "./actions";
 const user = {
     id: "3ac49877-78fd-4f2d-9c14-2ba64ddda919",
     image: "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png",
-    type: "User",
+    type: "Admin",
     name: "blas",
     lastName: "casale",
     mail: "cosito@live.com",

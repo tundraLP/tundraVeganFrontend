@@ -28,7 +28,7 @@ const FormUpdateUser = () => {
 
     const user = useSelector((state) => state.user);
 
-    const [ newImage, setNewImage ] = useState(null);
+    const [newImage, setNewImage] = useState(null);
 
     // estados de los inputs
 
@@ -69,19 +69,19 @@ const FormUpdateUser = () => {
     const createUser = async () => {
         const getUser = async (mail, password) => {
             try {
-              const user = await axios.get(`${uriBack}/user/getUser?mail=${mail}&password=${password}`).then((res) => res.data);
-              dispatch(sign_in(user));
+                const user = await axios.get(`${uriBack}/user/getUser?mail=${mail}&password=${password}`).then((res) => res.data);
+                dispatch(sign_in(user));
             } catch (error) {
-              dispatch(put_error(error.response.data.error));
+                dispatch(put_error(error.response.data.error));
             };
         };
         try {
-            if (newImage){
-                const imageForm = { image: newImage, folder: 'Users', name: user.mail};
+            if (newImage) {
+                const imageForm = { image: newImage, folder: 'Users', name: user.mail };
                 const cloudImage = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res) => res.data.secure_url);
                 const newUser = new Client(input.name, input.lastName, input.mail, input.adress, cloudImage, input.password, user.type, user.id);
                 await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
-            }else{
+            } else {
                 const newUser = new Client(input.name, input.lastName, input.mail, input.adress, input.image, input.password, user.type, user.id);
                 await axios.put(`${uriBack}/user/updateUser`, newUser).then((res) => console.log(res.data));
             }
@@ -93,23 +93,24 @@ const FormUpdateUser = () => {
             dispatch(put_error(error.response.data.error));
         };
     };
+
     const handleChangeImage = (e) => {
         const selectedImage = e.target.files[0];
         if (selectedImage) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const base64Image = e.target.result;
-            const img = document.getElementById('img-preview');
-            setNewImage(base64Image);
-            img.src = base64Image;
-          };
-          reader.readAsDataURL(selectedImage);
-        }else{
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const base64Image = e.target.result;
+                const img = document.getElementById('img-preview');
+                setNewImage(base64Image);
+                img.src = base64Image;
+            };
+            reader.readAsDataURL(selectedImage);
+        } else {
             setNewImage(null);
             const img = document.getElementById('img-preview');
             img.src = user.image;
-        } 
-      };
+        }
+    };
 
     const closeModal = () => setBoolean(!boolean);
 
@@ -125,18 +126,18 @@ const FormUpdateUser = () => {
     return (
         <section className='section-update'>
             <form className='form form-update' onSubmit={handleSubmit}>
-            <Link to='/Mi-Perfil'>
-                <button className='button-form'>Volver</button>
-            </Link>
-                <legend className='legend'>Actualiza tus datos:</legend>
                 
+                <Link to='/Mi-Perfil' className='button-form'>Volver</Link>
+
+                <legend className='legend'>Actualiza tus datos:</legend>
+
                 <ul className='ul-form'>
                     <li className='image-input'>
-                            <img className='image-preview' src={user.image} alt='Profile image' id='img-preview' />
-                            <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
-                                accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
-                            />
-                                <label for="image" className='button-form' >Cambiar foto</label>
+                        <img className='img-profile' src={user.image} alt='Profile image' id='img-preview' />
+                        <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage}
+                            accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
+                        />
+                        <label for="image" className='button-form' >Cambiar foto</label>
                     </li>
 
                     <Input
