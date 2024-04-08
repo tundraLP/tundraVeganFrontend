@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { put_error } from "../../../redux/actions";
+import { uriBack } from "../../../utils/const";
+import { validate } from "../../../utils/validateInput";
 import Input from "../../General/Input/Input";
 import ProductToUpdate from "../../../utils/classProductToUpdate";
-import { put_error } from "../../../redux/actions";
 import axios from "axios";
-import { uriBack } from "../../../utils/const";
+import './FormUpdateProduct.css';
 
-const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
+const FormUpdateProduct = ({ product, changeUpdate, updateOn, chargeMessage }) => {
+
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const types = useSelector((state) => state.types);
 
@@ -18,6 +18,7 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
     ...product,
     price: parseInt(product.price),
   });
+
   const [error, setError] = useState({
     name: "",
     image: "",
@@ -26,6 +27,8 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
     description: "",
     type: "",
   });
+
+  const errorMessage = error.name || error.description || error.image || error.type || error.price || error.stock;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,52 +57,13 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
           productToUpdate
         );
         if (response.status == 201) {
-          alert(`Producto actualizado correctamente.`);
+          chargeMessage(response.data);
           setUpdateOn(!updateOn);
-          navigate(`/Inicio`);
-        } else alert(`Algo salio mal.`);
+        } else setMessage('Hubo un error al actualizar el producto.');
       } else alert(`No se selecciono ningun cambio en el producto.`);
     } catch (error) {
-      console.log(error);
       dispatch(put_error(error));
     }
-  };
-
-  const validate = (input, error) => {
-    const errors = { ...error };
-
-    if (!input.name) errors.name = "*Este campo es obligatorio.";
-    else if (
-      !/^[\w\d\sáéíóúÁÉÍÓÚüÜñÑ.,:;¡!¿?(){}[\]\-\/&%$@#"'+=*<>|_]{10,50}$/.test(
-        input.name
-      )
-    ) {
-      errors.name = `Necesita una nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
-    } else errors.name = "";
-
-    if (!input.description) errors.description = "*Este campo es obligatorio.";
-    else if (
-      !/^[\w\d\sáéíóúÁÉÍÓÚüÜñÑ.,:;¡!¿?(){}[\]\-\/&%$@#"'+=*<>|_]{10,300}$/.test(
-        input.description
-      )
-    ) {
-      errors.description = `Necesita una descripcion de 10 a 300 caracteres. Actual(${input.name.length})`;
-    } else errors.description = "";
-
-    if (!input.type) errors.type = "*Este campo es obligatorio.";
-    else errors.type = "";
-
-    if (!input.price) errors.price = "*Este campo es obligatorio.";
-    else if (!/^\d+$/.test(input.price)) {
-      errors.price = "Este campo acepta numeros positivos unicamente.";
-    } else errors.price = "";
-
-    if (!input.stock) errors.stock = "*Este campo es obligatorio.";
-    else if (!/^\d+$/.test(input.stock)) {
-      errors.stock = "Este campo acepta numeros positivos unicamente.";
-    } else errors.stock = "";
-
-    return errors;
   };
 
   const handleChange = (e) => {
@@ -143,11 +107,11 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-prod">
         <div className="image-input">
-          <h4>Imagen del producto</h4>
+          <p className="p">Imagen del producto</p>
           <img
-            className="image-preview"
+            className="img"
             src={product.image}
             alt="Profile image"
             id="img-preview"
@@ -217,7 +181,7 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
           key={"stock"}
         />
 
-        <div>
+        <div className="box-input">
           <label htmlFor="type" className="label-form">
             Categoria:{" "}
           </label>
@@ -234,29 +198,14 @@ const FormUpdateProduct = ({ product, setUpdateOn, updateOn }) => {
                 )
             )}
           </select>
-          <span className="span--form">{error.type}</span>
+          <span className="span-form-error">{error.type}</span>
         </div>
-        {error.name ||
-        error.description ||
-        error.image ||
-        error.type ||
-        error.price ||
-        error.stock ? (
-          <h3>Se encontraron errores.</h3>
-        ) : (
-          <button type="submit" className="button-form">
-            Actualizar producto
-          </button>
-        )}
-        <button
-          className="button-form"
-          onClick={(e) => {
-            e.preventDefault();
-            setUpdateOn(!updateOn);
-          }}
-        >
-          Cancelar
-        </button>
+        {
+          errorMessage ?
+            <span className="span-form-error">Se encontraron errores.</span> :
+            <button type="submit" className="button-form">Actualizar producto</button>
+        }
+        <button className="button-form" onClick={changeUpdate}>Cancelar</button>
       </form>
     </>
   );

@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import ReviewsListContainer from '../../General/ReviewsListContainer/ReviewsListContainer';
 import { useFetchReviews } from '../../../hooks/useFetchReviews';
 import FormUpdateProduct from '../FormUpdateProduct/FormUpdateProduct';
+import Modal from '../../General/Modal/Modal';
 
 const DetailContainerAdmin = () => {
 
@@ -15,33 +16,54 @@ const DetailContainerAdmin = () => {
   const detail = useSelector((state) => state.detail);
 
   const [updateOn, setUpdateOn] = useState(false);
+
+  const [boolean, setBoolean] = useState(false);
+
+  const [message, setMessage] = useState('');
+
   const { id } = useParams();
 
   useGetDetail(id, products);
 
   useFetchReviews(id);
 
-  useEffect(()=>{
-    return ()=>{setUpdateOn(false)}
+  useEffect(() => {
+    return () => { setUpdateOn(false) }
   }, []);
 
+  const chargeMessage = (mes) => {
+    setMessage(mes);
+    setBoolean(!boolean);
+  };
+
+  const closeModal = () => setBoolean(!boolean);
+
+  const changeUpdate = () => setUpdateOn(!updateOn);
+
   return (<>
-    {updateOn == false ? <section className='section-detail-admin'>
+    {
+      updateOn == false ?
+        <section className='section-detail-admin'>
 
-      <h3>Detalles del producto</h3>
+          <h3>Detalles del producto</h3>
 
-      <button className='button-form' onClick={(e)=>{e.preventDefault();setUpdateOn(!updateOn)}}>Modificar producto</button>
-      {detail && <DetailAdmin {...detail} />}
+          <button className='button-form' onClick={changeUpdate}>Modificar producto</button>
 
-      <ReviewsListContainer />
+          {detail && <DetailAdmin {...detail} />}
 
-    </section> : <section className='section-update-product'>
-      {/* aca poner el form de updateProduct y pasarle por props lo que necesita*/}
-      <h3>Modificar producto</h3>  
+          {boolean && <Modal closeModal={closeModal} message={message} key={'message'} />}
 
-      {detail && < FormUpdateProduct product={detail} setUpdateOn={setUpdateOn} updateOn={updateOn} />}
-      
-      </section>
+          <ReviewsListContainer />
+
+        </section>
+        :
+        <section className='section-update-product'>
+
+          <h3>Modificar producto</h3>
+
+          {detail && < FormUpdateProduct product={detail} changeUpdate={changeUpdate} updateOn={updateOn} chargeMessage={chargeMessage} />}
+
+        </section>
     }
   </>
   );

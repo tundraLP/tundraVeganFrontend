@@ -20,6 +20,14 @@
     align-items: center;
     gap: 15px;
 }
+
 .modifyData{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.img-profile {
+    width: 210px;
 }

@@ -1,4 +1,4 @@
-import { regExp, regExp_mail, regExp_password } from "./const";
+import { regExp, regExp_mail, regExp_password, regExpDescription, regExpNameProd, regExpPrice } from "./const";
 
 export const validateInput = (input, error) => {
     if (input.name == "" || !regExp.test(input.name)) error.name = "* El nombre solo puede contener letras.";
@@ -23,4 +23,33 @@ export const validateInput = (input, error) => {
     else error.adress = "";
 
     return error;
+};
+
+export const validate = (input, error) => {
+    const errors = { ...error };
+
+    if (!input.name) errors.name = "*Este campo es obligatorio.";
+    else if (!regExpNameProd.test(input.name)) {
+        errors.name = `Necesita una nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
+    } else errors.name = "";
+
+    if (!input.description) errors.description = "*Este campo es obligatorio.";
+    else if (!regExpDescription.test(input.description)) {
+        errors.description = `Necesita una descripcion de 10 a 300 caracteres. Actual(${input.name.length})`;
+    } else errors.description = "";
+
+    if (!input.type) errors.type = "*Este campo es obligatorio.";
+    else errors.type = "";
+
+    if (!input.price) errors.price = "*Este campo es obligatorio.";
+    else if (!regExpPrice.test(input.price)) {
+        errors.price = "Este campo acepta numeros positivos unicamente.";
+    } else errors.price = "";
+
+    if (!input.stock) errors.stock = "*Este campo es obligatorio.";
+    else if (!regExpPrice.test(input.stock)) {
+        errors.stock = "Este campo acepta numeros positivos unicamente.";
+    } else errors.stock = "";
+
+    return errors;
 };

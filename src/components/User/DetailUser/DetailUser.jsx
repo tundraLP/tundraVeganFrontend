@@ -29,15 +29,20 @@ const DetailUser = ({ name, stock, price, Type, description, image, id, style, r
 
         <p className='p category'>{description}</p>
 
-        <Buttons
-          requestFavorite={requestFavorite}
-          counter={counter}
-          increment={increment}
-          decrement={decrement}
-          id={id}
-          style={style}
-          name={name}
-        />
+        {
+          stock >= 1 ?
+            <Buttons
+              requestFavorite={requestFavorite}
+              counter={counter}
+              increment={increment}
+              decrement={decrement}
+              id={id}
+              style={style}
+              name={name}
+            />
+            :
+            <span className='span-stock red'>No hay stock de este producto</span>
+        }
       </div>
 
     </div>

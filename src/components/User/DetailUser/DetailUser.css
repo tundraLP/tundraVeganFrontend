@@ -58,3 +58,7 @@
     justify-content: space-around;
     align-items: flex-start;
 }
+
+.span-stock {
+    font-size: 1.7rem;
+}

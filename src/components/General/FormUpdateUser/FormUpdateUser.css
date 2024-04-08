@@ -27,18 +27,14 @@
     color: black;
 }
 
-.image-preview{
-    max-width: 270px;
-    max-height: fit-content;
-}
-
-.input-file{
+.input-file {
     display: none;
 }
 
-.image-input{
-    display:grid;
+.image-input {
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    flex-direction: column;
+    gap: 6px;
 }

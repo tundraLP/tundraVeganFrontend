@@ -17,7 +17,7 @@ const ReviewList = () => {
     const firstIndex = (currentPage - 1) * quantityPerPage;
     const lastIndex = Math.min(firstIndex + quantityPerPage, reviews.length);
 
-    const quantityOptions = [6, 12, reviews.length];
+    const quantityOptions = reviews.length > 10 ? [5, 10, reviews.length] : [reviews.length];
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -40,9 +40,10 @@ const ReviewList = () => {
 
             <section className='section-pagination'>
                 {
-                    reviews.length > 0 &&
+                    reviews.length > 10 &&
                     <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
                 }
+
                 <div className="container-options">
 
                     <span className='span-options'>Filtrar cantidad de reseñas mostradas</span>
