@@ -41,7 +41,6 @@ const App = () => {
                 <Route path="/Detalle-pedido/:orderId" element={<DetailOrderContainer />} />
                 {/* rutas admin */}
                 <Route path="/Detalle-admin/:id" element={<DetailContainerAdmin />} />
-                <Route path="/Actualizar-producto/:id" element={< FormUpdateProduct/>} />
                 <Route path="/Administrar-usuarios" element={<ManageUsersContainer />} />
                 <Route path="/Ordenes-admin" element={<OrderListContainerAdmin />} />
                 <Route path="/Detalle-pedido-admin/:id" element={<OrderDetailContainer />} />

@@ -36,7 +36,7 @@ const CreateProductAdmin = () => {
 
         if (!input.name) errors.name = '*Este campo es obligatorio.';
         else if (!/^[\w\d\sáéíóúÁÉÍÓÚüÜñÑ.,:;¡!¿?(){}[\]\-\/&%$@#"'+=*<>|_]{10,50}$/.test(input.name)) {
-            errors.name = `Necesita una nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
+            errors.name = `Necesita un nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
         } else errors.name = '';
 
         if (!input.description) errors.description = '*Este campo es obligatorio.';
@@ -52,8 +52,8 @@ const CreateProductAdmin = () => {
             errors.price = 'Este campo acepta numeros positivos unicamente.';
         } else errors.price = '';
 
-        /*if (!input.image) errors.image = '*La imagen es obligatoria.'
-        else errors.image = '';*/
+        if (!input.image) errors.image = '*La imagen es obligatoria.'
+        else errors.image = '';
 
         if (!input.stock) errors.stock = '*Este campo es obligatorio.'
         else if (!/^\d+$/.test(input.stock)) {
@@ -82,12 +82,14 @@ const CreateProductAdmin = () => {
           reader.onload = (e) => {
             const base64Image = e.target.result;
             const img = document.getElementById('img-preview');
-            setInput({ ...input, image: base64Image });
             img.src = base64Image;
+            setInput({ ...input, image: base64Image });
+            setError(validate({ ...input, image: base64Image }, error));
           };
           reader.readAsDataURL(selectedImage);
         }else{
             setInput({ ...input, image: null });
+            setError(validate({ ...input, image: null }, error));
             const img = document.getElementById('img-preview');
             img.src = defaultImage;
         } 
@@ -96,6 +98,7 @@ const CreateProductAdmin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            if (!input.image) throw Error(`No se selecciono una imagen para el producto.`);
             const imageForm = { image: input.image, folder: input.type, name: input.name };
             const imageUrl = await axios.post(`${uriBack}/image/uploadImage`, imageForm).then((res) => {
                 return res.data.secure_url
@@ -103,6 +106,7 @@ const CreateProductAdmin = () => {
             const product = new Product(input.name, input.type, input.description, input.price, input.stock, imageUrl, null);
             await axios.post(`${uriBack}/product/createProduct`, product).then((res) => navigate('/Inicio'));
         } catch (error) {
+            alert(error);
             dispatch(put_error(error));
         }
     }
@@ -131,7 +135,10 @@ const CreateProductAdmin = () => {
                             <input className='input-file' type="file" name="image" id="image" onChange={handleChangeImage} 
                                 accept='.jpeg, .jpg, .png, .webp' size='2.621.440' // size = 2.5 mb
                             />
-                                <label for="image" className='button-form' >Cambiar foto</label>
+                            <label htmlFor="image" className='button-form' >Cambiar foto</label>
+                            <label htmlFor="image" className='labels'>{error.image}</label>
+                            {error.image && <label htmlFor='image' className='labels'>(Ésta es una imagen de muestra)</label>
+                            }
                 </div>
 
                 <Input
@@ -196,7 +203,7 @@ const CreateProductAdmin = () => {
 
                 {
                     error.name || error.description || error.image || error.type || error.price || error.stock ?
-                        <h3>Errors founded.</h3> :
+                        <h3>Se econtraron errores</h3> :
                         <button type="submit" className="button-form" >Crear producto</button>
                 }
             </form>
