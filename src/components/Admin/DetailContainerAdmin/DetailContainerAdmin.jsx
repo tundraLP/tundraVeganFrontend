@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import DetailAdmin from '../DetailAdmin/DetailAdmin';
-import './DetailContainerAdmin.css';
 import { useGetDetail } from '../../../hooks/useGetDetail';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ReviewsListContainer from '../../General/ReviewsListContainer/ReviewsListContainer';
 import { useFetchReviews } from '../../../hooks/useFetchReviews';
+import DetailAdmin from '../DetailAdmin/DetailAdmin';
+import ReviewsListContainer from '../../General/ReviewsListContainer/ReviewsListContainer';
 import FormUpdateProduct from '../FormUpdateProduct/FormUpdateProduct';
 import Modal from '../../General/Modal/Modal';
+import './DetailContainerAdmin.css';
 
 const DetailContainerAdmin = () => {
 
@@ -61,7 +61,7 @@ const DetailContainerAdmin = () => {
 
           <h3>Modificar producto</h3>
 
-          {detail && < FormUpdateProduct product={detail} changeUpdate={changeUpdate} updateOn={updateOn} chargeMessage={chargeMessage} />}
+          {detail && < FormUpdateProduct product={detail} changeUpdate={changeUpdate} chargeMessage={chargeMessage} />}
 
         </section>
     }

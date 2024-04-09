@@ -82,7 +82,7 @@ const RegisterForm = () => {
     };
   };
 
-  const isUser = async (mail) => {
+  const isUser = async () => {
     const response = await axios.get(`${uriBack}/user/isUser?mail=${input.mail}`).then((res) => res.data);
     return response;
   }

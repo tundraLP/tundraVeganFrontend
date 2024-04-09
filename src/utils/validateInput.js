@@ -26,30 +26,29 @@ export const validateInput = (input, error) => {
 };
 
 export const validate = (input, error) => {
-    const errors = { ...error };
 
-    if (!input.name) errors.name = "*Este campo es obligatorio.";
+    if (!input.name) error.name = "*Este campo es obligatorio.";
     else if (!regExpNameProd.test(input.name)) {
-        errors.name = `Necesita una nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
-    } else errors.name = "";
+        error.name = `Necesita una nombre de 10 a 50 caracteres. Actual(${input.name.length})`;
+    } else error.name = "";
 
-    if (!input.description) errors.description = "*Este campo es obligatorio.";
+    if (!input.description) error.description = "*Este campo es obligatorio.";
     else if (!regExpDescription.test(input.description)) {
-        errors.description = `Necesita una descripcion de 10 a 300 caracteres. Actual(${input.name.length})`;
-    } else errors.description = "";
+        error.description = `Necesita una descripcion de 10 a 300 caracteres. Actual(${input.name.length})`;
+    } else error.description = "";
 
-    if (!input.type) errors.type = "*Este campo es obligatorio.";
-    else errors.type = "";
+    if (!input.type) error.type = "*Este campo es obligatorio.";
+    else error.type = "";
 
-    if (!input.price) errors.price = "*Este campo es obligatorio.";
+    if (!input.price) error.price = "*Este campo es obligatorio.";
     else if (!regExpPrice.test(input.price)) {
-        errors.price = "Este campo acepta numeros positivos unicamente.";
-    } else errors.price = "";
+        error.price = "Este campo acepta numeros positivos unicamente.";
+    } else error.price = "";
 
-    if (!input.stock) errors.stock = "*Este campo es obligatorio.";
+    if (!input.stock) error.stock = "*Este campo es obligatorio.";
     else if (!regExpPrice.test(input.stock)) {
-        errors.stock = "Este campo acepta numeros positivos unicamente.";
-    } else errors.stock = "";
+        error.stock = "Este campo acepta numeros positivos unicamente.";
+    } else error.stock = "";
 
-    return errors;
+    return error;
 };

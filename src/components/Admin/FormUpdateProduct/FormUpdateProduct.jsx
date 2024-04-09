@@ -8,7 +8,7 @@ import ProductToUpdate from "../../../utils/classProductToUpdate";
 import axios from "axios";
 import './FormUpdateProduct.css';
 
-const FormUpdateProduct = ({ product, changeUpdate, updateOn, chargeMessage }) => {
+const FormUpdateProduct = ({ product, changeUpdate, chargeMessage }) => {
 
   const dispatch = useDispatch();
 
@@ -58,7 +58,6 @@ const FormUpdateProduct = ({ product, changeUpdate, updateOn, chargeMessage }) =
         );
         if (response.status == 201) {
           chargeMessage(response.data);
-          setUpdateOn(!updateOn);
         } else setMessage('Hubo un error al actualizar el producto.');
       } else alert(`No se selecciono ningun cambio en el producto.`);
     } catch (error) {
@@ -189,14 +188,15 @@ const FormUpdateProduct = ({ product, changeUpdate, updateOn, chargeMessage }) =
             <option key={product.Type.name} value={product.Type.name}>
               {product.Type.name}
             </option>
-            {types.map(
-              (type) =>
-                type.name != product.Type.name && (
-                  <option key={type.name} value={type.name}>
-                    {type.name}
-                  </option>
-                )
-            )}
+            {
+              types.map(
+                (type) =>
+                  type.name != product.Type.name && (
+                    <option key={type.name} value={type.name}>
+                      {type.name}
+                    </option>
+                  ))
+            }
           </select>
           <span className="span-form-error">{error.type}</span>
         </div>
