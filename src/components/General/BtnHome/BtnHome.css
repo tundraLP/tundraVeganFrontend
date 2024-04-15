@@ -1,0 +1,13 @@
+.back {
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #D7903A;
+  transition: 0.7s;
+  color: #fafafa;
+  font-size: 1.8rem;
+  width: max-content;
+}
+
+.back:hover {
+  background-color: #d7903ae3;
+}

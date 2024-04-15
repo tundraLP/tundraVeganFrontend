@@ -41,8 +41,6 @@ const ManageUser = ({ name, mail, lastName, id, type }) => {
         };
     };
 
-    console.log(stateToSend)
-
     return (
         <article className='card-user'>
             <div className='box-info-user'>

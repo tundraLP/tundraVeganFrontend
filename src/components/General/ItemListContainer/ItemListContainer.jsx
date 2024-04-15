@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFetchProducts } from '../../../hooks/useFetchProducts';
 import { useFetchTypes } from '../../../hooks/useFetchTypes';
@@ -20,16 +21,34 @@ const ItemListContainer = () => {
   const types = useSelector((state) => state.types);
   const dispatch = useDispatch();
 
+  // estados iniciales de los input
+  const initialValue = { order: '', type: 'all' };
+  const [input, setInput] = useState({ type: initialValue.type, order: initialValue.order });
+
   const productsToRender = useSelector((state) => state.productsToRender);
 
+  // handler de los inputs
   const handleChangeFilter = (e) => {
-    e.preventDefault();
-    dispatch(filter_by_type([...productsToRender], e.target.value, [...products]));
+    setInput({
+      ...input,
+      type: e.target.value
+    });
   };
 
   const handleChangeOrder = (e) => {
-    e.preventDefault();
-    switch (e.target.value) {
+    setInput({
+      ...input,
+      order: e.target.value
+    });
+  };
+
+  // useEffect para controlar los inputs
+  useEffect(() => {
+    dispatch(filter_by_type([...productsToRender], input.type, [...products]));
+  }, [input.type]);
+
+  useEffect(() => {
+    switch (input.order) {
       case 'abc': dispatch(order_by_name([...productsToRender]));
         break;
       case 'zyx': dispatch(order_by_name_backwards([...productsToRender]));
@@ -41,7 +60,9 @@ const ItemListContainer = () => {
       default: dispatch(reset_products([...products]));
         break;
     };
-  };
+  }, [input.order]);
+
+  const resetFilters = () => setInput(initialValue);
 
   useFetchProducts();
   useFetchTypes();
@@ -54,22 +75,24 @@ const ItemListContainer = () => {
 
         <div className='box-selects'>
           <label className='label-selects'>Filtrar por: </label>
-          <select onChange={handleChangeFilter} className='select-item'>
-            <option key='all' value='all'>*Todos los productos*</option>
+          <select onChange={handleChangeFilter} className='select-item' value={input.type}>
+            <option key='all' value={initialValue.type}>*Todos los productos*</option>
             {types.map((type) => <option key={type.name} value={type.name} >{type.name}</option>)}
           </select>
         </div>
 
         <div className='box-selects'>
           <label className='label-selects' htmlFor='order'>Ordenar por: </label>
-          <select onChange={handleChangeOrder} id='order' className='select-item'>
-            <option selected disabled key='nothing' value=''>*Sin orden*</option>
+          <select onChange={handleChangeOrder} id='order' className='select-item' value={input.order}>
+            <option selected disabled key='nothing' value={initialValue.order}>*Sin orden*</option>
             <option key='abc' value='abc' >Nombre ascendente</option>
             <option key='zyx' value='zyx' >Nombre descendente</option>
             <option key='price-asc' value='price-asc' >Mayor precio</option>
             <option key='price-des' value='price-des' >Menor precio</option>
           </select>
         </div>
+
+        <button onClick={resetFilters} className='button-form'>Reiniciar filtros</button>
 
       </div>
 

@@ -6,6 +6,7 @@ import { useFetchTypes } from '../../../hooks/useFetchTypes';
 import { uriBack } from '../../../utils/const';
 import { Product } from '../../../utils/classProduct';
 import { validate } from '../../../utils/validateInput';
+import BtnHome from '../../General/BtnHome/BtnHome';
 import Modal from '../../General/Modal/Modal';
 import Input from '../../General/Input/Input';
 import './CreateProductAdmin.css';
@@ -95,6 +96,9 @@ const CreateProductAdmin = () => {
 
     return (
         <section className='section-create-product'>
+
+            <BtnHome />
+
             <h2>Crear Producto Admin</h2>
 
             <div className='div-create-product'>

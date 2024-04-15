@@ -1,8 +1,14 @@
 .section-profile {
+    background: url('https://res.cloudinary.com/tundra/image/upload/v1705500647/Utils/Acelga.webp');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px 10px;
+    gap: 15px;
 }
 
 @media screen and (min-width: 700px) {

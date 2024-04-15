@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './ManageUsersContainer.css';
 import { useFetchUsers } from '../../../hooks/useFetchUsers';
-import ManageUserList from '../ManageUserList/ManageUserList';
 import { useSearchUser } from '../../../hooks/useSearchUser';
+import ManageUserList from '../ManageUserList/ManageUserList';
+import BtnHome from '../../General/BtnHome/BtnHome';
 
 const ManageUsersContainer = () => {
 
@@ -16,6 +17,8 @@ const ManageUsersContainer = () => {
 
     return (
         <section className='section-manage-user'>
+
+            <BtnHome />
 
             <h2>Lista de usuarios</h2>
 
