@@ -25,6 +25,7 @@ const initialState = {
     types: [],
     clients: [],
     reviews: [],
+    inputs: { order: '', type: 'all' },
     detail: null,
     error: null,
     booleanToasty: false
@@ -236,6 +237,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 reviews: action.payload
+            };
+
+        case actions.PUT_INPUT:
+            return {
+                ...state,
+                inputs: action.payload
             };
 
         default:

@@ -23,7 +23,8 @@ export const actions = {
     ORDER: 'ORDER',
     RESET_PRODUCTS: 'RESET_PRODUCTS',
     GET_REVIEW: 'GET_REVIEW',
-    CLEAN_REVIEW: 'CLEAN_REVIEW'
+    CLEAN_REVIEW: 'CLEAN_REVIEW',
+    PUT_INPUT: 'PUT_INPUT'
 };
 
 // actions para los user
@@ -322,6 +323,15 @@ export const clean_review = () => {
         return dispatch({
             type: actions.CLEAN_REVIEW,
             payload: []
+        });
+    };
+};
+
+export const put_input = (input) => {
+    return (dispatch) => {
+        return dispatch({
+            type: actions.PUT_INPUT,
+            payload: input
         });
     };
 };
