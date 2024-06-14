@@ -160,20 +160,20 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case actions.UPDATE_QUANTITY:
-            const { id, count } = action.payload;
-            const prod = state.cart.find((prod) => prod.id === id);
-            const index = state.cart.findIndex((prod) => prod.id === id);
+            const { id, counter } = action.payload;
 
-            const newProd = {
-                ...prod,
-                count: count
-            };
-
-            state.cart[index] = newProd;
+            const newCart = state.cart.map((prod) => {
+                if (prod.id === id) {
+                    const newProd = { ...prod, count: counter };
+                    return newProd
+                } else {
+                    return prod
+                }
+            });
 
             return {
                 ...state,
-                cart: state.cart
+                cart: newCart
             };
 
         case actions.CLEAN_CART:
