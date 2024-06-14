@@ -147,11 +147,11 @@ export const delete_from_cart = (itemId) => {
     };
 };
 
-export const update_quantity = ({ id, count }) => {
+export const update_quantity = ({ id, counter }) => {
     return (dispatch) => {
         return dispatch({
             type: actions.UPDATE_QUANTITY,
-            payload: { id, count }
+            payload: { id, counter }
         });
     };
 };

@@ -30,7 +30,7 @@ const ButtonsCart = ({ deleteItem, id, count, stock, name }) => {
 
     const updateCart = () => {
         if (counter != count) {
-            dispatch(update_quantity({ id: id, count: counter }));
+            dispatch(update_quantity({ id, counter }));
             notification();
         };
     };

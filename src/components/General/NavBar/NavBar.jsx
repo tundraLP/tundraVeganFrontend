@@ -15,26 +15,26 @@ const NavBar = () => {
 
     const cart = useSelector((state) => state.cart);
 
-    useLocalStorage();
+    // useLocalStorage();
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (user) {
-            const date = new Date();
+    //     if (user) {
+    //         const date = new Date();
 
-            const day = date.getDate();
+    //         const day = date.getDate();
 
-            const putInLS = {
-                day: day,
-                cart: cart,
-                id: user && user.id
-            };
+    //         const putInLS = {
+    //             day: day,
+    //             cart: cart,
+    //             id: user && user.id
+    //         };
 
-            const stringify = JSON.stringify(putInLS);
+    //         const stringify = JSON.stringify(putInLS);
 
-            localStorage.setItem('cart', stringify);
-        };
-    }, [cart]);
+    //         localStorage.setItem('cart', stringify);
+    //     };
+    // }, [cart]);
 
     useRedirectHome();
 
